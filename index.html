@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BSL Consulting — консалтинговое бюро: бухгалтерия, финансы, право</title>
+  <meta name="description"
+    content="Доверьте профессионалам бухгалтерский учёт: ведение учёта, финансовый анализ и юридическое сопровождение бизнеса в одном бюро. Работаем по всей России. +7 903-009-99-51" />
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%233dd9a0'/%3E%3Ctext%20x='32'%20y='43'%20font-family='Arial'%20font-size='32'%20font-weight='700'%20text-anchor='middle'%20fill='%2304291d'%3EA%3C/text%3E%3C/svg%3E" />
+
+  <!-- DaisyUI 5 (компоненты + темы) -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/daisyui.css" rel="stylesheet" type="text/css" />
+  <!-- Tailwind CSS v4 (browser build) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+  <!-- Шрифт Manrope (кириллица) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Тема до первой отрисовки: сохранённый выбор -> тёмная по умолчанию -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('asb-theme');
+        if (saved === 'light' || saved === 'dark') {
+          document.documentElement.dataset.theme = saved;
+        }
+      } catch (e) { /* приватный режим — остаёмся в тёмной теме */ }
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+
+  <style type="text/tailwindcss">
+    /* Мостик: семантические цвета DaisyUI -> утилиты Tailwind (переключаются вместе с темой) */
+    @theme inline {
+      --color-canvas: var(--color-base-100);
+      --color-surface: var(--color-base-200);
+      --color-line: var(--color-base-300);
+      --color-ink: var(--color-base-content);
+      --color-brand: var(--color-primary);
+      --color-on-brand: var(--color-primary-content);
+    }
+  </style>
+
+  <style>
+    /* ===== Фирменные темы BSL Consulting для DaisyUI ===== */
+    html[data-theme='dark'] {
+      color-scheme: dark;
+      --color-base-100: #0c0f12;
+      --color-base-200: #141a1e;
+      --color-base-300: #2a3238;
+      --color-base-content: #dbe4e9;
+      --color-primary: #3dd9a0;
+      --color-primary-content: #04291d;
+      --color-secondary: #3dd9a0;
+      --color-secondary-content: #04291d;
+      --color-accent: #3dd9a0;
+      --color-accent-content: #04291d;
+      --color-neutral: #1a2127;
+      --color-neutral-content: #dbe4e9;
+      --color-info: #4cc3f0;
+      --color-info-content: #04252f;
+      --color-success: #3dd9a0;
+      --color-success-content: #04291d;
+      --color-warning: #f0b34c;
+      --color-warning-content: #2f2204;
+      --color-error: #f04c6e;
+      --color-error-content: #2f040d;
+      --radius-selector: .75rem;
+      --radius-field: .75rem;
+      --radius-box: 1rem;
+    }
+
+    html[data-theme='light'] {
+      color-scheme: light;
+      --color-base-100: #ffffff;
+      --color-base-200: #f1f6f3;
+      --color-base-300: #d7e2db;
+      --color-base-content: #132019;
+      --color-primary: #0e6b52;
+      --color-primary-content: #ffffff;
+      --color-secondary: #0e6b52;
+      --color-secondary-content: #ffffff;
+      --color-accent: #0e6b52;
+      --color-accent-content: #ffffff;
+      --color-neutral: #132019;
+      --color-neutral-content: #ffffff;
+      --color-info: #1d7fa8;
+      --color-info-content: #ffffff;
+      --color-success: #0e6b52;
+      --color-success-content: #ffffff;
+      --color-warning: #a8680f;
+      --color-warning-content: #ffffff;
+      --color-error: #c02b4e;
+      --color-error-content: #ffffff;
+      --radius-selector: .75rem;
+      --radius-field: .75rem;
+      --radius-box: 1rem;
+    }
+
+    [x-cloak] {
+      display: none !important;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 6.5rem;
+      background: #0c0f12;
+    }
+
+    html[data-theme='light'] {
+      background: #ffffff;
+    }
+
+    body {
+      font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    ::selection {
+      background: #3dd9a0;
+      color: #04291d;
+    }
+
+    html[data-theme='light'] ::selection {
+      background: #0e6b52;
+      color: #ffffff;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+      border-radius: .25rem;
+    }
+
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-base-300) transparent;
+    }
+
+    /* Появление блоков при скролле */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .7s cubic-bezier(.22, .61, .36, 1), transform .7s cubic-bezier(.22, .61, .36, 1);
+    }
+
+    .js .reveal.in-view {
+      opacity: 1;
+      transform: none;
+    }
+
+    .js .reveal-d1 {
+      transition-delay: .08s;
+    }
+
+    .js .reveal-d2 {
+      transition-delay: .16s;
+    }
+
+    .js .reveal-d3 {
+      transition-delay: .24s;
+    }
+
+    /* Плавающие карточки в hero */
+    @keyframes floaty {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .float-a {
+      animation: floaty 6s ease-in-out infinite;
+    }
+
+    .float-b {
+      animation: floaty 7.5s ease-in-out 1.2s infinite;
+    }
+
+    /* Декоративная сетка на фоне hero */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(61, 217, 160, .08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(61, 217, 160, .08) 1px, transparent 1px);
+      background-size: 54px 54px;
+      -webkit-mask-image: radial-gradient(ellipse 90% 80% at 62% 18%, #000 22%, transparent 72%);
+      mask-image: radial-gradient(ellipse 90% 80% at 62% 18%, #000 22%, transparent 72%);
+    }
+
+    html[data-theme='light'] .hero-grid {
+      background-image:
+        linear-gradient(to right, rgba(14, 107, 82, .07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(14, 107, 82, .07) 1px, transparent 1px);
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(.96);
+        opacity: .5;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .pop {
+      animation: pop .25s ease-out;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pop {
+        animation: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .float-a,
+      .float-b {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-canvas text-ink antialiased">
+
+  <!-- ======================= HEADER ======================= -->
+  <header x-data="{ scrolled: false }" x-init="scrolled = window.scrollY > 24"
+    @scroll.window.passive="scrolled = window.scrollY > 24"
+    class="fixed inset-x-0 top-0 z-50 border-b transition-all duration-300"
+    :class="scrolled ? 'bg-canvas/85 shadow-lg shadow-black/5 backdrop-blur-xl border-line' : 'border-transparent bg-transparent'">
+    <nav class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-2 px-3 sm:gap-4 sm:px-6 lg:px-8"
+      aria-label="Основная навигация">
+
+      <!-- Логотип -->
+      <a href="#hero" class="flex shrink-0 items-center gap-2 sm:gap-3">
+        <span
+          class="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand to-emerald-700 text-sm sm:text-lg font-extrabold text-on-brand shadow-lg shadow-brand/25">A</span>
+        <span class="flex flex-col leading-none">
+          <span class="text-sm sm:text-lg font-extrabold tracking-tight">BSL <span
+              class="text-brand">Consulting</span></span>
+          <span
+            class="mt-1 hidden text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/50 sm:block">консалтинговое
+            бюро</span>
+        </span>
+      </a>
+
+      <!-- Десктоп-меню -->
+      <ul class="menu menu-horizontal hidden items-center gap-1 lg:flex">
+        <!-- Mega-menu «Услуги» -->
+        <li>
+          <div class="dropdown dropdown-bottom dropdown-hover" x-data="{ open: false }" @mouseenter="open = true"
+            @mouseleave="open = false" @keydown.escape.window="open = false">
+            <div tabindex="0" role="button" aria-haspopup="true" :aria-expanded="open"
+              class="flex items-center gap-1.5 rounded-lg px-3 py-2 font-medium text-ink/80 transition hover:bg-surface hover:text-ink"
+              :class="open && 'bg-surface text-ink'" @click="open = !open">
+              Услуги
+              <span class="transition-transform duration-200" :class="open && 'rotate-180'"><i
+                  data-lucide="chevron-down" class="h-4 w-4"></i></span>
+            </div>
+            <div
+              class="dropdown-content z-[60] mt-3 w-[46rem] rounded-3xl border border-line bg-surface p-4 shadow-2xl shadow-black/30">
+              <div class="grid grid-cols-3 gap-3">
+                <a href="#svc-accounting"
+                  class="group rounded-2xl border border-transparent p-4 transition hover:border-line hover:bg-canvas">
+                  <span
+                    class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand transition group-hover:bg-brand group-hover:text-on-brand"><i
+                      data-lucide="calculator" class="h-5.5 w-5.5"></i></span>
+                  <p class="mt-3 font-bold">Бухгалтерский учёт</p>
+                  <p class="mt-1 text-sm text-ink/60">Полное ведение учёта и сдача отчётности в срок</p>
+                </a>
+                <a href="#svc-finance"
+                  class="group rounded-2xl border border-transparent p-4 transition hover:border-line hover:bg-canvas">
+                  <span
+                    class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand transition group-hover:bg-brand group-hover:text-on-brand"><i
+                      data-lucide="trending-up" class="h-5.5 w-5.5"></i></span>
+                  <p class="mt-3 font-bold">Финансовый анализ</p>
+                  <p class="mt-1 text-sm text-ink/60">Точки роста и оптимизация расходов бизнеса</p>
+                </a>
+                <a href="#svc-legal"
+                  class="group rounded-2xl border border-transparent p-4 transition hover:border-line hover:bg-canvas">
+                  <span
+                    class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand transition group-hover:bg-brand group-hover:text-on-brand"><i
+                      data-lucide="scale" class="h-5.5 w-5.5"></i></span>
+                  <p class="mt-3 font-bold">Юридическое сопровождение</p>
+                  <p class="mt-1 text-sm text-ink/60">Правовая защита на всех этапах работы</p>
+                </a>
+              </div>
+              <div class="mt-3 rounded-2xl border border-line bg-canvas p-4">
+                <p class="text-xs font-bold uppercase tracking-[0.16em] text-ink/50">Все услуги бюро</p>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <a href="#services"
+                    class="badge badge-lg border-line bg-canvas font-medium text-ink/75 transition hover:border-brand hover:text-brand">Управленческий
+                    учёт</a>
+                  <a href="#services"
+                    class="badge badge-lg border-line bg-canvas font-medium text-ink/75 transition hover:border-brand hover:text-brand">Бюджетирование</a>
+                  <a href="#services"
+                    class="badge badge-lg border-line bg-canvas font-medium text-ink/75 transition hover:border-brand hover:text-brand">Финансовое
+                    моделирование</a>
+                  <a href="#services"
+                    class="badge badge-lg border-line bg-canvas font-medium text-ink/75 transition hover:border-brand hover:text-brand">Стратегический
+                    менеджмент</a>
+                  <a href="#services"
+                    class="badge badge-lg border-line bg-canvas font-medium text-ink/75 transition hover:border-brand hover:text-brand">Налоговое
+                    консультирование</a>
+                  <a href="#services"
+                    class="badge badge-lg border-line bg-canvas font-medium text-ink/75 transition hover:border-brand hover:text-brand">Отчётность
+                    и аудит</a>
+                  <a href="#services"
+                    class="badge badge-lg border-line bg-canvas font-medium text-ink/75 transition hover:border-brand hover:text-brand">Автоматизация
+                    учёта</a>
+                  <a href="#services"
+                    class="badge badge-lg border-line bg-canvas font-medium text-ink/75 transition hover:border-brand hover:text-brand">Фонды
+                    развития</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <!-- В шаблоне «Проекты» ведёт на якорь: замените href на ссылку страницы проектов -->
+        <li><a href="#calc"
+            class="rounded-lg px-3 py-2 font-medium text-ink/80 transition hover:bg-surface hover:text-ink">Калькулятор</a>
+        </li>
+        <li><a href="#projects"
+            class="rounded-lg px-3 py-2 font-medium text-ink/80 transition hover:bg-surface hover:text-ink">Проекты</a>
+        </li>
+        <li><a href="#about"
+            class="rounded-lg px-3 py-2 font-medium text-ink/80 transition hover:bg-surface hover:text-ink">О нас</a>
+        </li>
+        <li><a href="#contacts"
+            class="rounded-lg px-3 py-2 font-medium text-ink/80 transition hover:bg-surface hover:text-ink">Контакты</a>
+        </li>
+      </ul>
+
+      <!-- Правый блок -->
+      <div class="flex items-center gap-1 sm:gap-2.5">
+        <a href="tel:+79030099951"
+          class="hidden items-center gap-2 text-sm font-bold transition hover:text-brand xl:flex">
+          <i data-lucide="phone" class="h-4 w-4 text-brand"></i>+7 903-009-99-51
+        </a>
+        <a href="#contacts"
+          class="btn btn-primary btn-sm rounded-xl px-2.5 font-bold shadow-lg shadow-brand/25 sm:btn-md sm:px-4">Консультация</a>
+        <button type="button" class="btn btn-ghost btn-square btn-sm rounded-xl sm:btn-md"
+          @click="$store.theme.toggle()" aria-label="Переключить тему" title="Переключить тему">
+          <span class="block" x-show="$store.theme.dark"><i data-lucide="sun" class="h-5 w-5"></i></span>
+          <span class="block" x-show="!$store.theme.dark" x-cloak><i data-lucide="moon" class="h-5 w-5"></i></span>
+        </button>
+        <button type="button" class="btn btn-ghost btn-square btn-sm rounded-xl sm:btn-md lg:hidden"
+          @click="$store.ui.mobileOpen = true" aria-label="Открыть меню">
+          <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Мобильное меню (drawer) -->
+    <div x-data class="lg:hidden" x-effect="document.body.classList.toggle('overflow-hidden', $store.ui.mobileOpen)"
+      @keydown.escape.window="$store.ui.mobileOpen = false">
+      <div x-show="$store.ui.mobileOpen" x-cloak x-transition.opacity.duration.300ms
+        class="fixed inset-0 z-[70] bg-black/60 backdrop-blur-sm" @click="$store.ui.mobileOpen = false"
+        aria-hidden="true"></div>
+      <aside x-show="$store.ui.mobileOpen" x-cloak role="dialog" aria-modal="true" aria-label="Меню"
+        x-transition:enter="transition ease-out duration-300" x-transition:enter-start="translate-x-full"
+        x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
+        class="fixed inset-y-0 right-0 z-[80] flex w-[min(22rem,92vw)] flex-col bg-canvas shadow-2xl">
+        <div x-data="{ sub: false }" class="flex h-full flex-col">
+          <div class="flex items-center justify-between border-b border-line px-5 py-4">
+            <span class="flex items-center gap-2.5">
+              <span
+                class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-brand to-emerald-700 font-extrabold text-on-brand">A</span>
+              <span class="font-extrabold tracking-tight">BSL <span class="text-brand">Consulting</span></span>
+            </span>
+            <button type="button" class="btn btn-ghost btn-square btn-sm rounded-lg"
+              @click="$store.ui.mobileOpen = false" aria-label="Закрыть меню">
+              <i data-lucide="x" class="h-5 w-5"></i>
+            </button>
+          </div>
+          <nav class="flex-1 overflow-y-auto px-4 py-4">
+            <ul class="flex flex-col gap-1 text-base font-semibold">
+              <li>
+                <button type="button"
+                  class="flex w-full items-center justify-between rounded-xl px-4 py-3 transition hover:bg-surface"
+                  @click="sub = !sub" :aria-expanded="sub">
+                  Услуги
+                  <span class="transition-transform duration-200" :class="sub && 'rotate-180'"><i
+                      data-lucide="chevron-down" class="h-4 w-4"></i></span>
+                </button>
+                <ul x-show="sub" x-cloak x-transition
+                  class="mt-1 mb-2 ml-3 flex flex-col gap-0.5 border-l border-line pl-3 text-sm font-medium text-ink/70">
+                  <li><a href="#services" @click="$store.ui.mobileOpen = false"
+                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Бухгалтерский
+                      учёт</a></li>
+                  <li><a href="#services" @click="$store.ui.mobileOpen = false"
+                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Финансовый
+                      анализ</a></li>
+                  <li><a href="#services" @click="$store.ui.mobileOpen = false"
+                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Юридическое
+                      сопровождение</a></li>
+                  <li><a href="#services" @click="$store.ui.mobileOpen = false"
+                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Управленческий
+                      учёт</a></li>
+                  <li><a href="#services" @click="$store.ui.mobileOpen = false"
+                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Налоговое
+                      консультирование</a></li>
+                  <li><a href="#services" @click="$store.ui.mobileOpen = false"
+                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Отчётность и
+                      аудит</a></li>
+                  <li><a href="#services" @click="$store.ui.mobileOpen = false"
+                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Автоматизация
+                      учёта</a></li>
+                  <li><a href="#services" @click="$store.ui.mobileOpen = false"
+                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Фонды развития</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#projects" @click="$store.ui.mobileOpen = false"
+                  class="block rounded-xl px-4 py-3 transition hover:bg-surface">Проекты</a></li>
+              <li><a href="#calc" @click="$store.ui.mobileOpen = false"
+                  class="block rounded-xl px-4 py-3 transition hover:bg-surface">Калькулятор</a></li>
+              <li><a href="#about" @click="$store.ui.mobileOpen = false"
+                  class="block rounded-xl px-4 py-3 transition hover:bg-surface">О нас</a></li>
+              <li><a href="#contacts" @click="$store.ui.mobileOpen = false"
+                  class="block rounded-xl px-4 py-3 transition hover:bg-surface">Контакты</a></li>
+            </ul>
+          </nav>
+          <div class="flex flex-col gap-3 border-t border-line p-4">
+            <a href="tel:+79030099951" class="btn btn-outline w-full rounded-xl font-bold">
+              <i data-lucide="phone" class="h-4 w-4 text-brand"></i>+7 903-009-99-51
+            </a>
+            <a href="#contacts" @click="$store.ui.mobileOpen = false"
+              class="btn btn-primary w-full rounded-xl font-bold">Консультация</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================= HERO ======================= -->
+    <section id="hero" class="relative flex min-h-[100svh] items-center overflow-hidden pt-32 pb-20 lg:pt-36 lg:pb-24">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div
+        class="pointer-events-none absolute -top-32 right-[-8rem] h-[28rem] w-[28rem] rounded-full bg-brand/20 blur-[110px]"
+        aria-hidden="true"></div>
+      <div
+        class="pointer-events-none absolute bottom-[-10rem] left-[-10rem] h-[30rem] w-[30rem] rounded-full bg-brand/10 blur-[120px]"
+        aria-hidden="true"></div>
+
+      <div class="mx-auto grid w-full max-w-7xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8">
+        <!-- Текстовая часть -->
+        <div class="reveal">
+          <p
+            class="inline-flex items-center gap-2.5 rounded-full border border-brand/30 bg-brand/10 px-4 py-1.5 text-sm font-bold text-brand">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-brand"></span>
+            </span>
+            Центр бухгалтерской отчетности в Калининграде
+          </p>
+          <h1 class="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl xl:text-6xl">
+            Доверьте <span class="text-brand">бухгалтерский учёт</span> профессионалам
+          </h1>
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink/70">
+            Мы берём на себя бухгалтерию, финансовый анализ и кадры, чтобы вы не отвлекались на операционку и уверенно двигались к целям. Комплексный анализ и оптимизация бизнес процессов в одном бюро.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a href="#contacts" class="btn btn-primary btn-lg rounded-xl font-bold shadow-xl shadow-brand/25">
+              Получить консультацию<i data-lucide="arrow-right" class="h-5 w-5"></i>
+            </a>
+            <a href="#services"
+              class="btn btn-lg rounded-xl border border-line bg-transparent font-bold text-ink hover:border-brand hover:bg-brand/10 hover:text-brand">
+              Наши услуги
+            </a>
+          </div>
+
+          <!-- Trust-индикаторы -->
+          <dl class="mt-12 grid gap-3 sm:grid-cols-3">
+            <div class="flex items-center gap-3 rounded-2xl border border-line bg-surface/60 p-4 backdrop-blur">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand"><i
+                  data-lucide="map-pin" class="h-5 w-5"></i></span>
+              <div>
+                <dt class="text-sm font-bold">Работаем по всей России</dt>
+                <dd class="mt-0.5 text-xs text-ink/55">удалённый формат</dd>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 rounded-2xl border border-line bg-surface/60 p-4 backdrop-blur">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand"><i
+                  data-lucide="message-circle" class="h-5 w-5"></i></span>
+              <div>
+                <dt class="text-sm font-bold">Бесплатная консультация</dt>
+                <dd class="mt-0.5 text-xs text-ink/55">ответим в течение часа</dd>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 rounded-2xl border border-line bg-surface/60 p-4 backdrop-blur">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand"><i
+                  data-lucide="wallet" class="h-5 w-5"></i></span>
+              <div>
+                <dt class="text-sm font-bold">Оплата за результат</dt>
+                <dd class="mt-0.5 text-xs text-ink/55">без скрытых платежей</dd>
+              </div>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Визуальная часть: floating cards + дашборд -->
+        <div class="relative hidden lg:block">
+          <div class="pointer-events-none absolute -top-6 right-4 h-64 w-64 rounded-full bg-brand/25 blur-[100px]"
+            aria-hidden="true"></div>
+          <div
+            class="reveal reveal-d1 relative rounded-3xl border border-line bg-surface/80 p-6 shadow-2xl shadow-black/30 backdrop-blur">
+            <div class="flex items-center justify-between">
+              <span class="flex items-center gap-1.5" aria-hidden="true">
+                <span class="h-2.5 w-2.5 rounded-full bg-error/70"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-warning/70"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-success/70"></span>
+              </span>
+              <p class="text-sm font-bold text-ink/70">Налоговый календарь · ноябрь</p>
+              <span class="badge badge-sm border-line bg-canvas font-bold text-ink/60">2026</span>
+            </div>
+            <div class="mt-5 space-y-3">
+              <div class="flex items-center gap-3 rounded-2xl border border-line bg-canvas p-3.5">
+                <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-brand/10 text-brand"><i
+                    data-lucide="file-text" class="h-4.5 w-4.5"></i></span>
+                <p class="flex-1 text-sm font-semibold">НДС · декларация</p>
+                <span class="badge badge-sm badge-success font-bold">Сдана</span>
+              </div>
+              <div class="flex items-center gap-3 rounded-2xl border border-line bg-canvas p-3.5">
+                <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-brand/10 text-brand"><i
+                    data-lucide="calculator" class="h-4.5 w-4.5"></i></span>
+                <p class="flex-1 text-sm font-semibold">УСН · авансовый платёж</p>
+                <span class="badge badge-sm badge-warning font-bold">В работе</span>
+              </div>
+              <div class="flex items-center gap-3 rounded-2xl border border-line bg-canvas p-3.5">
+                <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-brand/10 text-brand"><i
+                    data-lucide="users" class="h-4.5 w-4.5"></i></span>
+                <p class="flex-1 text-sm font-semibold">Зарплата и взносы</p>
+                <span class="badge badge-sm badge-info font-bold">Напоминание</span>
+              </div>
+            </div>
+            <div class="mt-5 rounded-2xl border border-line bg-canvas p-4">
+              <div class="flex items-center justify-between text-sm">
+                <p class="font-semibold text-ink/70">Бухгалтерская отчетность организации</p>
+                <p class="font-extrabold text-brand">82%</p>
+              </div>
+              <div class="mt-2 h-2 overflow-hidden rounded-full bg-line" role="presentation">
+                <div class="h-full w-[82%] rounded-full bg-gradient-to-r from-brand/60 to-brand"></div>
+              </div>
+              <div class="mt-4 flex h-14 items-end gap-1.5" aria-hidden="true">
+                <div class="w-full rounded-t bg-brand/25" style="height:35%"></div>
+                <div class="w-full rounded-t bg-brand/25" style="height:55%"></div>
+                <div class="w-full rounded-t bg-brand/25" style="height:42%"></div>
+                <div class="w-full rounded-t bg-brand/25" style="height:70%"></div>
+                <div class="w-full rounded-t bg-brand/25" style="height:58%"></div>
+                <div class="w-full rounded-t bg-brand/25" style="height:82%"></div>
+                <div class="w-full rounded-t bg-brand" style="height:100%"></div>
+              </div>
+            </div>
+            <p class="mt-4 flex items-center gap-2 text-sm font-semibold text-ink/60">
+              <i data-lucide="check" class="h-4 w-4 text-brand"></i>Все задачи под контролем бюро
+            </p>
+          </div>
+
+          <!-- Floating card: отчётность сдана -->
+          <div
+            class="float-a absolute -right-4 -top-10 rounded-2xl border border-line bg-canvas/90 p-4 shadow-xl shadow-black/25 backdrop-blur">
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand/15 text-brand"><i
+                  data-lucide="check" class="h-5 w-5"></i></span>
+              <div>
+                <p class="text-sm font-bold">Отчётность сдана</p>
+                <p class="text-xs text-ink/55">ФНС · СФР · Росстат</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating card: управленческая отчётность -->
+          <div
+            class="float-b absolute -left-8 -bottom-14 rounded-2xl border border-line bg-canvas/90 p-4 shadow-xl shadow-black/25 backdrop-blur">
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand/15 text-brand"><i
+                  data-lucide="trending-up" class="h-5 w-5"></i></span>
+              <div>
+                <p class="text-sm font-bold">Управленческая отчётность</p>
+                <p class="text-xs text-ink/55">готова к отправке</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= SERVICES ======================= -->
+    <section id="services" class="relative py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-brand">/ Услуги /</p>
+          <h2 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">Комплексное решение для вашего
+            бизнеса</h2>
+          <p class="mt-5 text-lg leading-relaxed text-ink/65">Три направления экспертизы в одном бюро — вам не нужно
+            искать разных специалистов, мы закроем все вопросы.</p>
+        </div>
+
+        <div class="mt-14 grid gap-6 md:grid-cols-3">
+          <!-- Бухгалтерский учёт -->
+          <article id="svc-accounting"
+            class="card reveal group relative flex flex-col rounded-3xl border border-line bg-surface p-8 transition duration-300 hover:-translate-y-1.5 hover:border-brand/50 hover:shadow-2xl hover:shadow-brand/10">
+            <span
+              class="absolute inset-x-8 top-0 h-0.5 rounded-full bg-gradient-to-r from-brand/0 via-brand to-brand/0 opacity-0 transition duration-300 group-hover:opacity-100"
+              aria-hidden="true"></span>
+            <span
+              class="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand group-hover:shadow-lg group-hover:shadow-brand/25">
+              <i data-lucide="calculator" class="h-7 w-7"></i>
+            </span>
+            <h3 class="mt-6 text-xl font-extrabold">Бухгалтерский учёт</h3>
+            <p class="mt-3 leading-relaxed text-ink/65">Полное ведение бухгалтерского и налогового учёта, сдача
+              отчётности, учёт первичных документов. Работаем как с ИП, так и с юридическими лицами.</p>
+            <ul class="mt-6 flex-1 space-y-3 text-sm">
+              <li class="flex items-start gap-3"><i data-lucide="check"
+                  class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand"></i><span class="text-ink/75">Ведение первичной
+                  документации</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check"
+                  class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand"></i><span class="text-ink/75">Налоговый учёт и
+                  оптимизация</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check"
+                  class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand"></i><span class="text-ink/75">Сдача отчётности в
+                  срок</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check"
+                  class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand"></i><span class="text-ink/75">Ликвидация и регистрация
+                  ИП, ООО</span></li>
+            </ul>
+            <a href="#contacts"
+              class="mt-8 inline-flex items-center gap-2 font-bold text-brand transition-all hover:gap-3">Подробнее<i
+                data-lucide="arrow-right" class="h-4.5 w-4.5"></i></a>
+          </article>
+
+          <!-- Финансовый анализ -->
+          <article id="svc-finance"
+            class="card reveal reveal-d1 group relative flex flex-col rounded-3xl border border-line bg-surface p-8 transition duration-300 hover:-translate-y-1.5 hover:border-brand/50 hover:shadow-2xl hover:shadow-brand/10">
+            <span
+              class="absolute inset-x-8 top-0 h-0.5 rounded-full bg-gradient-to-r from-brand/0 via-brand to-brand/0 opacity-0 transition duration-300 group-hover:opacity-100"
+              aria-hidden="true"></span>
+            <span
+              class="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand group-hover:shadow-lg group-hover:shadow-brand/25">
+              <i data-lucide="trending-up" class="h-7 w-7"></i>
+            </span>
+            <h3 class="mt-6 text-xl font-extrabold">Финансовый анализ</h3>
+            <p class="mt-3 leading-relaxed text-ink/65">Глубокий анализ финансового состояния компании, выявление точек
+              роста и оптимизация расходов для повышения прибыльности бизнеса.</p>
+            <ul class="mt-6 flex-1 space-y-3 text-sm">
+              <li class="flex items-start gap-3"><i data-lucide="check"
+                  class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand"></i><span class="text-ink/75">Анализ финансовых
+                  показателей</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check"
+                  class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand"></i><span class="text-ink/75">Бюджетирование и
+                  прогнозирование</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check"
+                  class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand"></i><span class="text-ink/75">Оптимизация затрат</span>
+              </li>
+              <li class="flex items-start gap-3"><i data-lucide="check"
+                  class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand"></i><span class="text-ink/75">Управленческая
+                  отчётность</span></li>
+            </ul>
+            <a href="#contacts"
+              class="mt-8 inline-flex items-center gap-2 font-bold text-brand transition-all hover:gap-3">Подробнее<i
+                data-lucide="arrow-right" class="h-4.5 w-4.5"></i></a>
+          </article>
+
+          <!-- Кадровое обслуживание -->
+          <article id="svc-legal"
+            class="card reveal reveal-d2 group relative flex flex-col rounded-3xl border border-line bg-surface p-8 transition duration-300 hover:-translate-y-1.5 hover:border-brand/50 hover:shadow-2xl hover:shadow-brand/10">
+            <span
+              class="absolute inset-x-8 top-0 h-0.5 rounded-full bg-gradient-to-r from-brand/0 via-brand to-brand/0 opacity-0 transition duration-300 group-hover:opacity-100"
+              aria-hidden="true"></span>
+            <span
+              class="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand group-hover:shadow-lg group-hover:shadow-brand/25">
+              <i data-lucide="users" class="h-7 w-7"></i>
+            </span>
+            <h3 class="mt-6 text-xl font-extrabold">Кадры и зарплата</h3>
+            <p class="mt-3 leading-relaxed text-ink/65">Обеспечиваем комплексное ведение кадрового учёта: от приёма на работу до увольнения. Поможем избежать ошибок в ведении кадрового документооборота.</p>
+            <ul class="mt-6 flex-1 space-y-3 text-sm">
+              <li class="flex items-start gap-3"><i data-lucide="check"
+                  class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand"></i><span class="text-ink/75">Оформление трудовых отношений</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check"
+                  class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand"></i><span class="text-ink/75">Расчёт заработной платы</span>
+              </li>
+              <li class="flex items-start gap-3"><i data-lucide="check"
+                  class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand"></i><span class="text-ink/75">Кадровая и статистическая отчётность</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="check"
+                  class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand"></i><span class="text-ink/75">Миграционный учет иностранцев</span></li>
+            </ul>
+            <a href="#contacts"
+              class="mt-8 inline-flex items-center gap-2 font-bold text-brand transition-all hover:gap-3">Подробнее<i
+                data-lucide="arrow-right" class="h-4.5 w-4.5"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= PRICING ======================= -->
+    <section id="pricing" class="relative overflow-hidden border-y border-line bg-surface/50 py-20 lg:py-28">
+      <div
+        class="pointer-events-none absolute -right-32 top-10 h-[26rem] w-[26rem] rounded-full bg-brand/10 blur-[110px]"
+        aria-hidden="true"></div>
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-brand">/ Стоимость услуг /</p>
+          <h2 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">Понятные тарифы без скрытых
+            платежей</h2>
+          <p class="mt-5 text-lg leading-relaxed text-ink/65">Выберите направление, чтобы посмотреть состав услуг и
+            стоимость.</p>
+        </div>
+
+        <div class="reveal mt-12">
+          <div class="flex flex-wrap justify-center gap-2 border-b border-line pb-4" role="tablist"
+            aria-label="Категории услуг">
+            <button type="button" id="price-tab-accounting"
+              class="price-tab rounded-xl border border-brand bg-brand px-5 py-3 text-sm font-bold text-on-brand transition"
+              role="tab" aria-selected="true" aria-controls="price-panel-accounting"
+              data-price-tab="accounting">Бухгалтерское сопровождение</button>
+            <button type="button" id="price-tab-zero"
+              class="price-tab rounded-xl border border-line bg-canvas px-5 py-3 text-sm font-bold text-ink/70 transition hover:border-brand hover:text-brand"
+              role="tab" aria-selected="false" aria-controls="price-panel-zero" data-price-tab="zero"
+              tabindex="-1">Нулевая отчётность</button>
+            <button type="button" id="price-tab-consulting"
+              class="price-tab rounded-xl border border-line bg-canvas px-5 py-3 text-sm font-bold text-ink/70 transition hover:border-brand hover:text-brand"
+              role="tab" aria-selected="false" aria-controls="price-panel-consulting" data-price-tab="consulting"
+              tabindex="-1">Консультации и кадры</button>
+          </div>
+
+          <div class="mt-6 overflow-hidden rounded-3xl border border-line bg-canvas shadow-xl shadow-brand/5">
+            <div id="price-panel-accounting" class="price-panel" role="tabpanel" aria-labelledby="price-tab-accounting"
+              data-price-panel="accounting">
+              <div class="border-b border-line p-6 sm:p-8">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <h3 class="text-xl font-extrabold sm:text-2xl">Бухгалтерское сопровождение</h3>
+                    <p class="mt-2 text-sm text-ink/60">Для ИП и ООО. Итоговая стоимость определяется после оценки
+                      системы налогообложения и объёма операций.</p>
+                  </div>
+                  <span class="badge border-line bg-surface text-ink/60">Ежемесячно</span>
+                </div>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full min-w-[620px] text-left text-sm">
+                  <thead class="bg-surface text-xs uppercase tracking-wider text-ink/55">
+                    <tr>
+                      <th class="px-6 py-4 font-bold">Услуга</th>
+                      <th class="px-6 py-4 font-bold">Что входит</th>
+                      <th class="px-6 py-4 text-right font-bold">Стоимость</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-line">
+                    <tr>
+                      <td class="px-6 py-5 font-semibold">Бухгалтерский и налоговый учёт</td>
+                      <td class="px-6 py-5 text-ink/65">Ведение учёта операций и первичных документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">По запросу</td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-5 font-semibold">Подготовка и сдача отчётности</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка обязательной отчётности в рамках сопровождения</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">По запросу</td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-5 font-semibold">Комплексное сопровождение ИП / ООО</td>
+                      <td class="px-6 py-5 text-ink/65">Состав и объём работ согласуются индивидуально</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">По запросу</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="price-panel-zero" class="price-panel hidden" role="tabpanel" aria-labelledby="price-tab-zero"
+              data-price-panel="zero" hidden>
+              <div class="border-b border-line p-6 sm:p-8">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <h3 class="text-xl font-extrabold sm:text-2xl">Нулевая отчётность</h3>
+                    <p class="mt-2 text-sm text-ink/60">Демонстрационные цены за квартал при отсутствии деятельности и
+                      показателей к отражению.</p>
+                  </div>
+                  <span class="badge border-line bg-surface text-ink/60">За квартал</span>
+                </div>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full min-w-[560px] text-left text-sm">
+                  <thead class="bg-surface text-xs uppercase tracking-wider text-ink/55">
+                    <tr>
+                      <th class="px-6 py-4 font-bold">Система налогообложения</th>
+                      <th class="px-6 py-4 font-bold">Услуга</th>
+                      <th class="px-6 py-4 text-right font-bold">Стоимость</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-line">
+                    <tr>
+                      <td class="px-6 py-5 font-semibold">УСН 6%</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и отправка нулевой отчётности</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">2 000 ₽</td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-5 font-semibold">УСН 15%</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и отправка нулевой отчётности</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">2 500 ₽</td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-5 font-semibold">ОСНО</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и отправка нулевой отчётности</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">3 000 ₽</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="price-panel-consulting" class="price-panel hidden" role="tabpanel"
+              aria-labelledby="price-tab-consulting" data-price-panel="consulting" hidden>
+              <div class="border-b border-line p-6 sm:p-8">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <h3 class="text-xl font-extrabold sm:text-2xl">Консультации и кадровые услуги</h3>
+                    <p class="mt-2 text-sm text-ink/60">Разовые консультации и расчёт зарплаты, а также ежемесячное
+                      кадровое сопровождение.</p>
+                  </div>
+                  <span class="badge border-line bg-surface text-ink/60">По задаче</span>
+                </div>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full min-w-[600px] text-left text-sm">
+                  <thead class="bg-surface text-xs uppercase tracking-wider text-ink/55">
+                    <tr>
+                      <th class="px-6 py-4 font-bold">Услуга</th>
+                      <th class="px-6 py-4 font-bold">Единица расчёта</th>
+                      <th class="px-6 py-4 text-right font-bold">Стоимость</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-line">
+                    <tr>
+                      <td class="px-6 py-5 font-semibold">Налоговая консультация</td>
+                      <td class="px-6 py-5 text-ink/65">60 минут</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">2 000 ₽</td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-5 font-semibold">Расчёт зарплаты</td>
+                      <td class="px-6 py-5 text-ink/65">1 сотрудник / расчётный период</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">1 000 ₽</td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-5 font-semibold">Зарплата и кадровое сопровождение</td>
+                      <td class="px-6 py-5 text-ink/65">До 5 сотрудников / месяц</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">6 500 ₽/мес.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="reveal mt-8 flex flex-col gap-4 rounded-3xl border border-line bg-canvas p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <div class="max-w-2xl">
+            <h3 class="text-lg font-extrabold">Нужна другая услуга или комплексное сопровождение?</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/60">Стоимость восстановления учёта, финансового анализа,
+              юридических и других работ рассчитывается индивидуально после уточнения задачи.</p>
+          </div>
+          <a href="#contacts" class="btn btn-primary shrink-0 rounded-xl font-bold shadow-lg shadow-brand/20">Запросить
+            расчёт<i data-lucide="arrow-right" class="h-4 w-4"></i></a>
+        </div>
+        <p class="mt-5 text-center text-xs leading-relaxed text-ink/45">Цены приведены для демонстрации оформления.
+          Перед публикацией подтвердите состав услуг, периодичность и актуальные тарифы.</p>
+      </div>
+    </section>
+
+    <!-- ======================= CALC ======================= -->
+    <section id="calc" class="relative overflow-hidden py-16 lg:pt-6 lg:pb-6">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div
+        class="pointer-events-none absolute -left-32 top-24 h-[26rem] w-[26rem] rounded-full bg-brand/10 blur-[110px]"
+        aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" x-data="calc()">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-brand">/ Калькулятор /</p>
+          <h2 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">Рассчитайте стоимость
+            бухгалтерии за минуту</h2>
+          <p class="mt-5 text-lg leading-relaxed text-ink/65">Отметьте, что есть в вашем бизнесе, и сразу увидите состав
+            услуг и сумму в месяц. Мы перезвоним и уточним детали.</p>
+        </div>
+
+        <div class="mt-5 grid items-stretch gap-4 lg:grid-cols-[1.5fr_1fr]">
+
+          <!-- ===== ПАРАМЕТРЫ ===== -->
+          <div class="space-y-4 rounded-3xl border border-line bg-surface p-5">
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div>
+                <p class="mb-2 text-xs font-bold text-ink/55">Форма собственности</p>
+                <div class="grid grid-cols-2 gap-1 rounded-xl border border-line bg-canvas p-1" role="radiogroup"
+                  aria-label="Форма собственности">
+                  <template x-for="o in owners" :key="o.id">
+                    <button type="button" role="radio" :aria-checked="owner === o.id" @click="setOwner(o.id)"
+                      :title="o.hint" class="rounded-lg py-2 text-sm font-bold transition"
+                      :class="owner === o.id ? 'bg-brand text-on-brand shadow' : 'text-ink/65 hover:text-brand'"
+                      x-text="o.name"></button>
+                  </template>
+                </div>
+              </div>
+              <div>
+                <p class="mb-2 text-xs font-bold text-ink/55">Деятельность</p>
+                <label
+                  class="flex h-[42px] cursor-pointer items-center justify-between gap-3 rounded-xl border border-line bg-canvas px-3">
+                  <span class="text-sm font-bold">Нет деятельности <span
+                      class="font-medium text-ink/50">(нулевая)</span></span>
+                  <input type="checkbox" class="toggle toggle-primary toggle-sm" x-model="zero"
+                    aria-label="Нет деятельности" />
+                </label>
+              </div>
+            </div>
+
+            <div class="space-y-4 transition" :class="zero && 'pointer-events-none opacity-40'" :aria-disabled="zero">
+              <div>
+                <p class="mb-2 text-xs font-bold text-ink/55">Система налогообложения</p>
+                <div class="flex flex-wrap gap-1.5" role="radiogroup" aria-label="Система налогообложения">
+                  <template x-for="t in availableTaxes" :key="t.id">
+                    <button type="button" role="radio" :aria-checked="tax === t.id" @click="tax = t.id"
+                      class="rounded-lg border px-3 py-2 text-sm font-bold transition"
+                      :class="tax === t.id ? 'border-brand bg-brand text-on-brand' : 'border-line bg-canvas text-ink/70 hover:border-brand hover:text-brand'"
+                      x-text="t.name"></button>
+                  </template>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-3 gap-2">
+                <template x-for="s in steppers" :key="s.key">
+                  <div class="rounded-xl border border-line bg-canvas p-3">
+                    <p class="text-sm font-bold leading-tight" x-text="s.label"></p>
+                    <p class="mt-0.5 text-[11px] leading-tight text-ink/50" x-text="s.hint"></p>
+                    <div class="mt-2 flex items-center justify-between">
+                      <button type="button" class="btn btn-square btn-xs rounded-md border-line bg-surface"
+                        @click="step(s.key, -1)" :aria-label="'Уменьшить: ' + s.label"
+                        :disabled="$data[s.key] <= s.min">−</button>
+                      <span class="text-xl font-extrabold tabular-nums" x-text="$data[s.key]"></span>
+                      <button type="button" class="btn btn-square btn-xs rounded-md border-line bg-surface"
+                        @click="step(s.key, 1)" :aria-label="'Увеличить: ' + s.label"
+                        :disabled="$data[s.key] >= s.max">+</button>
+                    </div>
+                  </div>
+                </template>
+              </div>
+
+              <div>
+                <p class="mb-2 text-xs font-bold text-ink/55">Первичных документов в месяц</p>
+                <div class="grid grid-cols-4 gap-1.5">
+                  <template x-for="(d, i) in docsTiers" :key="i">
+                    <button type="button" @click="docs = i" class="rounded-lg border py-2 text-sm font-bold transition"
+                      :class="docs === i ? 'border-brand bg-brand text-on-brand' : 'border-line bg-canvas text-ink/70 hover:border-brand hover:text-brand'"
+                      x-text="d.label"></button>
+                  </template>
+                </div>
+              </div>
+
+              <div>
+                <p class="mb-2 text-xs font-bold text-ink/55">Дополнительно</p>
+                <div class="grid grid-cols-2 gap-1.5 sm:grid-cols-3">
+                  <template x-for="f in flagList" :key="f.id">
+                    <button type="button" role="switch" :aria-checked="!!flags[f.id]" :disabled="flagOff(f)"
+                      :title="flagOff(f) ? f.need : ''" @click="flags[f.id] = !flags[f.id]"
+                      class="rounded-lg border px-3 py-2 text-left transition disabled:cursor-not-allowed disabled:opacity-40"
+                      :class="flags[f.id] && !flagOff(f) ? 'border-brand bg-brand/10' : 'border-line bg-canvas hover:border-brand/50'">
+                      <span class="block text-[13px] font-bold leading-tight" x-text="f.name"></span>
+                      <span class="block text-[11px] text-ink/50" x-text="'+ ' + fmt(f.price) + ' ₽'"></span>
+                    </button>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== ИТОГ ===== -->
+          <aside aria-live="polite"
+            class="flex flex-col overflow-hidden rounded-3xl border border-line bg-canvas shadow-xl shadow-brand/5">
+            <div class="border-b border-line bg-surface px-5 py-4">
+              <div class="flex items-end justify-between gap-3">
+                <div>
+                  <p class="text-xs font-semibold text-ink/60">Стоимость в месяц</p>
+                  <p class="mt-1 text-4xl font-extrabold tracking-tight text-brand"><span :key="total"
+                      class="pop inline-block tabular-nums" x-text="fmt(total) + ' ₽'"></span></p>
+                </div>
+                <p class="pb-1 text-right text-xs text-ink/60" x-show="discountRate > 0" x-cloak>Экономия<br><span
+                    class="font-bold text-brand" x-text="fmt(yearSaving) + ' ₽/год'"></span></p>
+              </div>
+            </div>
+
+            <div class="flex flex-1 flex-col px-5 py-4">
+              <div class="grid grid-cols-3 gap-1 rounded-xl border border-line bg-surface p-1" role="radiogroup"
+                aria-label="Период оплаты">
+                <template x-for="p in periods" :key="p.id">
+                  <button type="button" role="radio" :aria-checked="period === p.id" @click="period = p.id"
+                    class="rounded-lg px-1 py-1.5 text-xs font-bold transition"
+                    :class="period === p.id ? 'bg-brand text-on-brand shadow' : 'text-ink/65 hover:text-brand'"
+                    x-text="p.d ? p.name + ' −' + Math.round(p.d * 100) + '%' : p.name"></button>
+                </template>
+              </div>
+
+              <ul class="mt-3 flex-1 divide-y divide-line text-[13px]">
+                <template x-for="l in lines" :key="l.label">
+                  <li class="flex items-start justify-between gap-3 py-1.5">
+                    <span class="text-ink/75" x-text="l.label"></span>
+                    <span class="shrink-0 font-bold tabular-nums" x-text="fmt(l.sum) + ' ₽'"></span>
+                  </li>
+                </template>
+                <li class="flex items-start justify-between gap-3 py-1.5 text-brand" x-show="discountRate > 0" x-cloak>
+                  <span>Скидка за предоплату</span>
+                  <span class="shrink-0 font-bold tabular-nums" x-text="'−' + fmt(monthly - total) + ' ₽'"></span>
+                </li>
+              </ul>
+
+              <form x-show="!sent" @submit.prevent="sent = true" class="mt-3 space-y-2" action="#" method="post">
+                <div class="grid grid-cols-2 gap-2">
+                  <input type="text" required placeholder="Имя" aria-label="Имя" x-model="name"
+                    class="input input-sm h-10 w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25" />
+                  <input type="tel" required placeholder="Телефон" aria-label="Телефон"
+                    class="input input-sm h-10 w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25" />
+                </div>
+                <button type="submit"
+                  class="btn btn-primary btn-block rounded-xl font-bold shadow-lg shadow-brand/25">Подключиться за <span
+                    x-text="fmt(total)"></span> ₽/мес</button>
+                <p class="text-[11px] leading-tight text-ink/45">Цены демонстрационные. Нажимая кнопку, вы соглашаетесь
+                  с <a href="#"
+                    class="underline decoration-line underline-offset-2 transition hover:text-brand">политикой
+                    конфиденциальности</a>.</p>
+              </form>
+              <div x-show="sent" x-cloak role="alert"
+                class="mt-3 rounded-2xl border border-brand/30 bg-brand/10 p-3 text-sm font-semibold leading-relaxed">
+                <span x-text="name"></span>, заявка принята: расчёт на <span x-text="fmt(total)"></span> ₽/мес
+                подтвердим в течение часа.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <!-- ======================= ABOUT ======================= -->
+    <section id="about" class="relative border-y border-line bg-surface/50 py-20 lg:py-28">
+      <div class="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:px-8">
+        <div class="reveal">
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-brand">/ О нас /</p>
+          <h2 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">BSL Consulting — консалтинговое бюро для
+            бизнеса, который ценит надёжность</h2>
+          <p class="mt-6 text-lg leading-relaxed text-ink/65">Мы объединили в одном бюро экспертизу в бухгалтерском
+            учёте, финансовом анализе и юридическом сопровождении. Наши клиенты — генеральные директора, индивидуальные
+            предприниматели и топ-менеджеры, которые доверяют сложные процессы профессионалам.</p>
+          <p class="mt-4 leading-relaxed text-ink/65">Мы работаем прозрачно: вы платите только за выполненные услуги и
+            получаете регулярную отчётность. Удалённый формат позволяет обслуживать компании из любого региона.</p>
+          <a href="#contacts" class="btn btn-primary btn-lg mt-8 rounded-xl font-bold shadow-xl shadow-brand/25">
+            Обсудить задачу<i data-lucide="arrow-right" class="h-5 w-5"></i>
+          </a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div
+            class="reveal rounded-3xl border border-line bg-canvas p-6 transition duration-300 hover:border-brand/50 hover:shadow-xl hover:shadow-brand/10">
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10 text-brand"><i
+                data-lucide="users" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">Команда экспертов</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/65">Бухгалтеры, финансисты и юристы работают в связке над
+              вашим проектом.</p>
+          </div>
+          <div
+            class="reveal reveal-d1 rounded-3xl border border-line bg-canvas p-6 transition duration-300 hover:border-brand/50 hover:shadow-xl hover:shadow-brand/10">
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10 text-brand"><i
+                data-lucide="shield-check" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">Гарантия качества</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/65">Несём финансовую ответственность за результат. Штрафы по
+              нашей вине — за наш счёт.</p>
+          </div>
+          <div
+            class="reveal reveal-d2 rounded-3xl border border-line bg-canvas p-6 transition duration-300 hover:border-brand/50 hover:shadow-xl hover:shadow-brand/10">
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10 text-brand"><i
+                data-lucide="zap" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">Оперативность</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/65">Быстрая обработка документов и сдача отчётности строго в
+              установленные сроки.</p>
+          </div>
+          <div
+            class="reveal reveal-d3 rounded-3xl border border-line bg-canvas p-6 transition duration-300 hover:border-brand/50 hover:shadow-xl hover:shadow-brand/10">
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10 text-brand"><i
+                data-lucide="user-check" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">Персональный менеджер</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/65">Закреплённый специалист, который всегда на связи и знает
+              ваш бизнес.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= WHY US ======================= -->
+    <section id="why-us" class="relative overflow-hidden py-20 lg:py-28">
+      <div
+        class="pointer-events-none absolute -left-40 top-20 h-[26rem] w-[26rem] rounded-full bg-brand/10 blur-[110px]"
+        aria-hidden="true"></div>
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-brand">/ Почему мы? /</p>
+          <h2 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">Почему руководители выбирают
+            BSL Consulting</h2>
+          <p class="mt-5 text-lg leading-relaxed text-ink/65">Мы обеспечиваем стабильность финансов и правовую защиту
+            вашего бизнеса.</p>
+        </div>
+
+        <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div
+            class="reveal group relative overflow-hidden rounded-3xl border border-line bg-surface p-7 transition duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-xl hover:shadow-brand/10">
+            <span class="absolute right-6 top-5 text-5xl font-extrabold text-ink/10" aria-hidden="true">01</span>
+            <span
+              class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand"><i
+                data-lucide="layers" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">Всё в одном месте</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/65">Бухгалтерия, финансы и юридическая поддержка — три
+              направления в одном бюро. Вам не нужно координировать разных подрядчиков.</p>
+          </div>
+          <div
+            class="reveal reveal-d1 group relative overflow-hidden rounded-3xl border border-line bg-surface p-7 transition duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-xl hover:shadow-brand/10">
+            <span class="absolute right-6 top-5 text-5xl font-extrabold text-ink/10" aria-hidden="true">02</span>
+            <span
+              class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand"><i
+                data-lucide="wallet" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">Оплата за результат</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/65">Вы оплачиваете только выполненные услуги. Никаких
+              скрытых платежей и абонентской платы за то, чем не пользуетесь.</p>
+          </div>
+          <div
+            class="reveal reveal-d2 group relative overflow-hidden rounded-3xl border border-line bg-surface p-7 transition duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-xl hover:shadow-brand/10">
+            <span class="absolute right-6 top-5 text-5xl font-extrabold text-ink/10" aria-hidden="true">03</span>
+            <span
+              class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand"><i
+                data-lucide="lock" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">Полная конфиденциальность</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/65">Все отношения оформляются договором. Конфиденциальность
+              финансовых данных вашей компании строго соблюдается.</p>
+          </div>
+          <div
+            class="reveal group relative overflow-hidden rounded-3xl border border-line bg-surface p-7 transition duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-xl hover:shadow-brand/10">
+            <span class="absolute right-6 top-5 text-5xl font-extrabold text-ink/10" aria-hidden="true">04</span>
+            <span
+              class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand"><i
+                data-lucide="cloud" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">Работаем удалённо</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/65">Обслуживаем компании из любого региона. Облачные
+              технологии обеспечивают бесперебойный доступ к информации.</p>
+          </div>
+          <div
+            class="reveal reveal-d1 group relative overflow-hidden rounded-3xl border border-line bg-surface p-7 transition duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-xl hover:shadow-brand/10">
+            <span class="absolute right-6 top-5 text-5xl font-extrabold text-ink/10" aria-hidden="true">05</span>
+            <span
+              class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand"><i
+                data-lucide="file-text" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">Прозрачная отчётность</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/65">Ежемесячные отчёты о состоянии учёта и финансов. Вы
+              всегда в курсе дел своей компании.</p>
+          </div>
+          <div
+            class="reveal reveal-d2 group relative overflow-hidden rounded-3xl border border-line bg-surface p-7 transition duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-xl hover:shadow-brand/10">
+            <span class="absolute right-6 top-5 text-5xl font-extrabold text-ink/10" aria-hidden="true">06</span>
+            <span
+              class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand"><i
+                data-lucide="target" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">Персональный подход</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/65">Мы понимаем специфику вашего бизнеса. Индивидуальные
+              решения для ИП, ООО и крупных компаний.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CONTACTS ======================= -->
+    <section id="contacts" class="relative overflow-hidden border-t border-line bg-surface/50 py-20 lg:py-28">
+      <div
+        class="pointer-events-none absolute -right-32 -top-24 h-[24rem] w-[24rem] rounded-full bg-brand/10 blur-[110px]"
+        aria-hidden="true"></div>
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-brand">/ Контакты /</p>
+          <h2 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">Готовы передать учёт и
+            юридические вопросы профессионалам?</h2>
+          <p class="mt-5 text-lg leading-relaxed text-ink/65">Оставьте заявку — мы свяжемся с вами в течение часа и
+            бесплатно проконсультируем по вашей ситуации. Или позвоните нам напрямую.</p>
+        </div>
+
+        <div class="mt-14 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <!-- Контактная информация -->
+          <div class="reveal flex flex-col gap-4">
+            <div class="rounded-3xl border border-line bg-canvas p-8">
+              <a href="tel:+79030099951" class="group flex items-center gap-4">
+                <span
+                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand"><i
+                    data-lucide="phone" class="h-6 w-6"></i></span>
+                <span>
+                  <span class="block text-xs font-bold uppercase tracking-[0.16em] text-ink/50">Телефон</span>
+                  <span class="mt-1 block text-xl font-extrabold transition group-hover:text-brand">+7
+                    908-889-00-00</span>
+                </span>
+              </a>
+              <div class="mt-7 space-y-6">
+                <a href="mailto:info@bslconsult.ru" class="group flex items-center gap-4">
+                  <span
+                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand"><i
+                      data-lucide="mail" class="h-6 w-6"></i></span>
+                  <span>
+                    <span class="block text-xs font-bold uppercase tracking-[0.16em] text-ink/50">Почта</span>
+                    <span class="mt-1 block font-bold transition group-hover:text-brand">info@bslconsult.ru</span>
+                  </span>
+                </a>
+                <div class="flex items-center gap-4">
+                  <span
+                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand"><i
+                      data-lucide="map-pin" class="h-6 w-6"></i></span>
+                  <span>
+                    <span class="block text-xs font-bold uppercase tracking-[0.16em] text-ink/50">Адрес</span>
+                    <span class="mt-1 block font-bold">Россия, г. Москва, ул. Сталинский вал, д. 38</span>
+                  </span>
+                </div>
+                <div class="flex items-center gap-4">
+                  <span
+                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand"><i
+                      data-lucide="clock" class="h-6 w-6"></i></span>
+                  <span>
+                    <span class="block text-xs font-bold uppercase tracking-[0.16em] text-ink/50">Связь с вами</span>
+                    <span class="mt-1 block font-bold">Ответим в течение часа</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="rounded-3xl border border-brand/30 bg-brand/10 p-6">
+              <p class="flex items-center gap-3 font-extrabold"><i data-lucide="message-circle"
+                  class="h-5 w-5 text-brand"></i>Бесплатная консультация</p>
+              <p class="mt-2 text-sm leading-relaxed text-ink/70">Расскажите о задаче — предложим решение и прозрачную
+                стоимость работ без обязательств.</p>
+            </div>
+          </div>
+
+          <!-- Форма обратной связи -->
+          <div class="reveal reveal-d1 rounded-3xl border border-line bg-canvas p-8 shadow-2xl shadow-black/10"
+            x-data="{ sent: false }">
+            <form x-show="!sent" @submit.prevent="sent = true" class="space-y-5" action="#" method="post">
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="cf-name" class="mb-2 block text-sm font-bold">Имя</label>
+                  <input id="cf-name" name="name" type="text" required placeholder="Как к вам обращаться"
+                    class="input w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25" />
+                </div>
+                <div>
+                  <label for="cf-phone" class="mb-2 block text-sm font-bold">Телефон</label>
+                  <input id="cf-phone" name="phone" type="tel" required placeholder="+7 (___) ___-__-__"
+                    class="input w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25" />
+                </div>
+              </div>
+              <div>
+                <label for="cf-service" class="mb-2 block text-sm font-bold">Что вас интересует?</label>
+                <select id="cf-service" name="service" required
+                  class="select w-full border border-line bg-surface/60 text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25">
+                  <option value="" selected disabled>Выберите услугу</option>
+                  <option>Управленческий учёт</option>
+                  <option>Бюджетирование</option>
+                  <option>Финансовое моделирование</option>
+                  <option>Стратегический менеджмент</option>
+                  <option>Бухгалтерский учёт</option>
+                  <option>Налоговое консультирование</option>
+                  <option>Отчётность и аудит</option>
+                  <option>Автоматизация учёта</option>
+                  <option>Юридическая поддержка</option>
+                  <option>Фонды развития</option>
+                  <option>Комплексное обслуживание</option>
+                </select>
+              </div>
+              <div>
+                <label for="cf-message" class="mb-2 block text-sm font-bold">Комментарий</label>
+                <textarea id="cf-message" name="message" rows="4" placeholder="Опишите вашу задачу"
+                  class="textarea w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25"></textarea>
+              </div>
+              <button type="submit"
+                class="btn btn-primary btn-lg btn-block rounded-xl font-bold shadow-xl shadow-brand/25">
+                Получить бесплатную консультацию
+              </button>
+              <p class="text-xs leading-relaxed text-ink/50">Нажимая кнопку, вы соглашаетесь с <a href="#"
+                  class="underline decoration-line underline-offset-2 transition hover:text-brand">политикой
+                  конфиденциальности</a>.</p>
+            </form>
+            <div x-show="sent" x-cloak role="alert"
+              class="alert flex-col items-start gap-3 rounded-2xl border border-brand/40 bg-brand/10 text-ink">
+              <span class="flex items-center gap-2 font-extrabold"><i data-lucide="check"
+                  class="h-5 w-5 text-brand"></i>Заявка отправлена</span>
+              <p class="text-sm leading-relaxed text-ink/70">Мы свяжемся с вами в течение часа. Спасибо за обращение!
+              </p>
+              <button type="button"
+                class="btn btn-sm rounded-lg border border-line bg-transparent text-ink hover:border-brand hover:bg-brand/10 hover:text-brand"
+                @click="sent = false">Отправить ещё одну</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="border-t border-line bg-canvas">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-[1.2fr_.65fr_.9fr_1fr]">
+        <!-- Бренд и контакты -->
+        <div>
+          <a href="#hero" class="flex items-center gap-3">
+            <span
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand to-emerald-700 text-lg font-extrabold text-on-brand shadow-lg shadow-brand/25">A</span>
+            <span class="flex flex-col leading-none">
+              <span class="text-lg font-extrabold tracking-tight">BSL <span class="text-brand">Consulting</span></span>
+              <span class="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/50">консалтинговое
+                бюро</span>
+            </span>
+          </a>
+          <p class="mt-5 max-w-xs text-sm leading-relaxed text-ink/60">Консалтинговое бюро бухгалтерского учёта,
+            финансового анализа и юридического сопровождения.</p>
+          <div class="mt-6 space-y-3 text-sm">
+            <a href="tel:+79030099951" class="flex items-center gap-3 font-bold transition hover:text-brand"><i
+                data-lucide="phone" class="h-4.5 w-4.5 text-brand"></i>+7 908-008-00-00</a>
+            <a href="mailto:info@bslconsult.ru" class="flex items-center gap-3 font-bold transition hover:text-brand"><i
+                data-lucide="mail" class="h-4.5 w-4.5 text-brand"></i>info@bslconsult.ru</a>
+            <p class="flex items-start gap-3 text-ink/60"><i data-lucide="map-pin"
+                class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand"></i>Россия, г. Москва, ул. Сталинский вал, д. 34</p>
+          </div>
+        </div>
+
+        <!-- Меню -->
+        <nav aria-label="Меню в подвале">
+          <h3 class="text-sm font-bold uppercase tracking-[0.16em] text-ink/50">Меню</h3>
+          <ul class="mt-4 space-y-2.5 text-sm font-semibold">
+            <li><a href="#hero" class="text-ink/70 transition hover:text-brand">Главная</a></li>
+            <li><a href="#services" class="text-ink/70 transition hover:text-brand">Услуги</a></li>
+            <li><a href="#calc" class="text-ink/70 transition hover:text-brand">Калькулятор</a></li>
+            <li><a href="#about" class="text-ink/70 transition hover:text-brand">О нас</a></li>
+            <li><a href="#why-us" class="text-ink/70 transition hover:text-brand">Почему мы</a></li>
+            <li><a href="#contacts" class="text-ink/70 transition hover:text-brand">Контакты</a></li>
+          </ul>
+        </nav>
+
+        <!-- Услуги -->
+        <nav aria-label="Услуги в подвале">
+          <h3 class="text-sm font-bold uppercase tracking-[0.16em] text-ink/50">Услуги</h3>
+          <ul class="mt-4 space-y-2.5 text-sm text-ink/70">
+            <li><a href="#services" class="transition hover:text-brand">Управленческий учёт</a></li>
+            <li><a href="#services" class="transition hover:text-brand">Бюджетирование</a></li>
+            <li><a href="#services" class="transition hover:text-brand">Финансовое моделирование</a></li>
+            <li><a href="#services" class="transition hover:text-brand">Стратегический менеджмент</a></li>
+            <li><a href="#services" class="transition hover:text-brand">Бухгалтерский учёт</a></li>
+            <li><a href="#services" class="transition hover:text-brand">Налоговые консультации</a></li>
+            <li><a href="#services" class="transition hover:text-brand">Аудит</a></li>
+            <li><a href="#services" class="transition hover:text-brand">Автоматизация учёта</a></li>
+            <li><a href="#services" class="transition hover:text-brand">Юридическое сопровождение</a></li>
+            <li><a href="#services" class="transition hover:text-brand">Фонды развития</a></li>
+          </ul>
+        </nav>
+
+        <!-- Мини-форма -->
+        <div x-data="{ sent: false }">
+          <h3 class="text-sm font-bold uppercase tracking-[0.16em] text-ink/50">Бесплатная консультация</h3>
+          <form x-show="!sent" @submit.prevent="sent = true" class="mt-4 space-y-3" action="#" method="post">
+            <input name="name" type="text" required placeholder="Имя" aria-label="Имя"
+              class="input w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25" />
+            <input name="phone" type="tel" required placeholder="Телефон" aria-label="Телефон"
+              class="input w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25" />
+            <button type="submit"
+              class="btn btn-primary btn-block rounded-xl font-bold shadow-lg shadow-brand/25">Получить бесплатную
+              консультацию</button>
+            <p class="text-xs leading-relaxed text-ink/50">Нажимая кнопку, вы соглашаетесь с <a href="#"
+                class="underline decoration-line underline-offset-2 transition hover:text-brand">политикой
+                конфиденциальности</a>.</p>
+          </form>
+          <div x-show="sent" x-cloak role="alert"
+            class="mt-4 rounded-2xl border border-brand/30 bg-brand/10 p-4 text-sm font-semibold leading-relaxed">
+            Заявка отправлена — мы свяжемся с вами в течение часа.
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-line pt-6 text-sm text-ink/55">
+        <p>Общество с ограниченной ответственностью «Салса» · ИНН 9726677791 · КПП 072501401</p>
+      </div>
+      <div
+        class="mt-4 flex flex-col gap-3 border-t border-line pt-6 text-sm text-ink/55 sm:flex-row sm:items-center sm:justify-between">
+        <p>© <span x-data x-text="new Date().getFullYear()">2026</span> BSL Consulting. Все права защищены.</p>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <a href="#" class="transition hover:text-brand">Политика конфиденциальности</a>
+          <span>Создано в <a href="#" class="font-bold text-ink/70 transition hover:text-brand">RUN4PIXEL</a> · сайты ·
+            приложения · реклама</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================= SCRIPTS ======================= -->
+  <script>
+    // Alpine-хранилища: тема оформления и мобильное меню
+    document.addEventListener('alpine:init', () => {
+      Alpine.store('theme', {
+        dark: document.documentElement.dataset.theme !== 'light',
+        toggle() {
+          this.dark = !this.dark;
+          document.documentElement.dataset.theme = this.dark ? 'dark' : 'light';
+          try { localStorage.setItem('asb-theme', this.dark ? 'dark' : 'light'); } catch (e) { /* noop */ }
+        }
+      });
+      Alpine.store('ui', { mobileOpen: false });
+    });
+  </script>
+  <script>
+    document.addEventListener('alpine:init', () => {
+      // Демонстрационные тарифы (₽ в месяц) — меняйте здесь
+      Alpine.data('calc', () => ({
+        owner: 'ip', tax: 'usn6', emp: 0, mp: 0, acc: 1, docs: 0, zero: false,
+        period: 'month', sent: false, name: '',
+        flags: { nds: false, ved: false, stat: false, kassa: false, mil: false, kedo: false },
+
+        owners: [
+          { id: 'ip', name: 'ИП', hint: 'Индивидуальный предприниматель' },
+          { id: 'ooo', name: 'ООО', hint: 'Общество с ограниченной ответственностью' }
+        ],
+        taxes: [
+          { id: 'usn6', name: 'УСН «доходы»', ip: 3500, ooo: 7500 },
+          { id: 'usn15', name: 'УСН «доходы минус расходы»', ip: 5500, ooo: 9500 },
+          { id: 'osno', name: 'ОСНО', ip: 9000, ooo: 14000 },
+          { id: 'ausn', name: 'АУСН', ip: 3000, ooo: 5000 },
+          { id: 'patent', name: 'Патент', ip: 3000, ooo: null }
+        ],
+        zeroPrice: { ip: 1500, ooo: 3000 },
+        steppers: [
+          { key: 'emp', label: 'Сотрудники', hint: '2 500 ₽ + 700 ₽ за чел.', min: 0, max: 50 },
+          { key: 'mp', label: 'Маркетплейсы', hint: '2 000 ₽ за площадку', min: 0, max: 5 },
+          { key: 'acc', label: 'Расчётные счета', hint: '1-й включён, далее 500 ₽', min: 1, max: 10 }
+        ],
+        docsTiers: [
+          { label: 'до 30', price: 0 }, { label: '31–100', price: 2000 },
+          { label: '101–300', price: 5000 }, { label: 'более 300', price: 9000 }
+        ],
+        flagList: [
+          { id: 'nds', name: 'Плачу НДС на УСН', price: 1500, only: ['usn6', 'usn15'], need: 'Только для УСН' },
+          { id: 'kassa', name: 'Онлайн-касса', price: 1000 },
+          { id: 'ved', name: 'Импорт или экспорт', price: 4000 },
+          { id: 'stat', name: 'Статистическая отчётность', price: 800 },
+          { id: 'mil', name: 'Воинский учёт', price: 500, emp: true, need: 'Нужен хотя бы 1 сотрудник' },
+          { id: 'kedo', name: 'КЭДО', price: 1000, emp: true, need: 'Нужен хотя бы 1 сотрудник' }
+        ],
+        periods: [
+          { id: 'month', name: 'Помесячно', d: 0 },
+          { id: 'quarter', name: 'За квартал', d: 0.05 },
+          { id: 'year', name: 'За год', d: 0.1 }
+        ],
+
+        get availableTaxes() { return this.taxes.filter(t => t[this.owner] !== null); },
+        setOwner(id) { this.owner = id; if (this.taxes.find(t => t.id === this.tax)[id] === null) this.tax = 'usn6'; },
+        step(k, n) {
+          const s = this.steppers.find(x => x.key === k);
+          this[k] = Math.min(s.max, Math.max(s.min, this[k] + n));
+          if (k === 'emp' && this[k] === 0) { this.flags.mil = false; this.flags.kedo = false; }
+        },
+        flagOff(f) {
+          return (f.only && !f.only.includes(this.tax)) || (f.emp && this.emp === 0);
+        },
+        get lines() {
+          const t = this.taxes.find(x => x.id === this.tax);
+          const ownerName = this.owner === 'ip' ? 'ИП' : 'ООО';
+          if (this.zero) return [{ label: 'Нулевая отчётность · ' + ownerName, sum: this.zeroPrice[this.owner] }];
+          const out = [{ label: 'Бухгалтерия ' + ownerName + ' · ' + t.name, sum: t[this.owner] }];
+          if (this.emp > 0) out.push({ label: 'Кадры и зарплата · ' + this.emp + ' сотр.', sum: 2500 + 700 * this.emp });
+          if (this.mp > 0) out.push({ label: 'Маркетплейсы · ' + this.mp + ' шт.', sum: 2000 * this.mp });
+          if (this.acc > 1) out.push({ label: 'Дополнительные счета · ' + (this.acc - 1) + ' шт.', sum: 500 * (this.acc - 1) });
+          if (this.docsTiers[this.docs].price) out.push({ label: 'Первичные документы · ' + this.docsTiers[this.docs].label, sum: this.docsTiers[this.docs].price });
+          this.flagList.forEach(f => { if (this.flags[f.id] && !this.flagOff(f)) out.push({ label: f.name, sum: f.price }); });
+          return out;
+        },
+        get monthly() { return this.lines.reduce((a, l) => a + l.sum, 0); },
+        get discountRate() { return this.periods.find(p => p.id === this.period).d; },
+        get total() { return Math.round(this.monthly * (1 - this.discountRate)); },
+        get yearSaving() { return (this.monthly - this.total) * 12; },
+        fmt(n) { return Number(n).toLocaleString('ru-RU'); }
+      }));
+    });
+  </script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      // Иконки Lucide
+      if (window.lucide) { lucide.createIcons(); }
+
+      // Появление блоков при скролле
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('in-view'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function (el) { io.observe(el); });
+    });
+  </script>
+
+  <script>
+    (() => {
+      const tabs = Array.from(document.querySelectorAll("[data-price-tab]"));
+      const panels = Array.from(document.querySelectorAll("[data-price-panel]"));
+      if (!tabs.length || !panels.length) return;
+
+      const activate = (name) => {
+        tabs.forEach((tab) => {
+          const selected = tab.dataset.priceTab === name;
+          tab.setAttribute("aria-selected", String(selected));
+          tab.tabIndex = selected ? 0 : -1;
+          tab.classList.toggle("border-brand", selected);
+          tab.classList.toggle("bg-brand", selected);
+          tab.classList.toggle("text-on-brand", selected);
+          tab.classList.toggle("bg-canvas", !selected);
+          tab.classList.toggle("border-line", !selected);
+          tab.classList.toggle("text-ink/70", !selected);
+        });
+        panels.forEach((panel) => {
+          const selected = panel.dataset.pricePanel === name;
+          panel.hidden = !selected;
+          panel.classList.toggle("hidden", !selected);
+        });
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => activate(tab.dataset.priceTab));
+        tab.addEventListener("keydown", (event) => {
+          if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+          event.preventDefault();
+          let next = index;
+          if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+          if (event.key === "ArrowLeft") next = (index - 1 + tabs.length) % tabs.length;
+          if (event.key === "Home") next = 0;
+          if (event.key === "End") next = tabs.length - 1;
+          tabs[next].focus();
+          activate(tabs[next].dataset.priceTab);
+        });
+      });
+    })();
+  </script>
+</body>
+
+</html>
