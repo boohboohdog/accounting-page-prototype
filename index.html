@@ -7,6 +7,84 @@
   <title>BSL Consulting — консалтинговое бюро: бухгалтерия, финансы, право</title>
   <meta name="description"
     content="Доверьте профессионалам бухгалтерский учёт: ведение учёта, финансовый анализ и юридическое сопровождение бизнеса в одном бюро. Работаем по всей России. +7 903-009-99-51" />
+  <meta name="color-scheme" content="dark light" />
+  <!-- Для production: добавить canonical URL и проверенные единые телефон/адрес после сверки контактных данных. -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "#organization",
+      "name": "BSL Consulting",
+      "legalName": "Общество с ограниченной ответственностью «Салса»",
+      "taxID": "9726677791",
+      "email": "info@bslconsult.ru",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "knowsAbout": [
+        "Бухгалтерский учёт",
+        "Налоговый учёт",
+        "Финансовый анализ",
+        "Управленческий учёт",
+        "Кадровый учёт",
+        "Расчёт заработной платы",
+        "Юридическое сопровождение бизнеса"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "#website",
+      "name": "BSL Consulting",
+      "inLanguage": "ru-RU",
+      "publisher": {
+        "@id": "#organization"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "#service-accounting",
+      "name": "Бухгалтерское сопровождение",
+      "serviceType": "Ведение бухгалтерского и налогового учёта, подготовка и сдача отчётности",
+      "provider": {
+        "@id": "#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "#service-finance",
+      "name": "Финансовый анализ",
+      "serviceType": "Анализ финансовых показателей, бюджетирование, прогнозирование и управленческая отчётность",
+      "provider": {
+        "@id": "#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "#service-hr",
+      "name": "Кадры и зарплата",
+      "serviceType": "Кадровое делопроизводство, расчёт заработной платы и кадровая отчётность",
+      "provider": {
+        "@id": "#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      }
+    }
+  ]
+}
+  </script>
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%233dd9a0'/%3E%3Ctext%20x='32'%20y='43'%20font-family='Arial'%20font-size='32'%20font-weight='700'%20text-anchor='middle'%20fill='%2304291d'%3EA%3C/text%3E%3C/svg%3E" />
 
@@ -247,6 +325,32 @@
       }
     }
   </style>
+  <style>
+    .matrix-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: .85;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 78%, transparent 100%), linear-gradient(to right, rgba(0,0,0,.3) 0, rgba(0,0,0,.55) 42%, #000 100%);
+      -webkit-mask-composite: source-in;
+      mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 78%, transparent 100%), linear-gradient(to right, rgba(0,0,0,.3) 0, rgba(0,0,0,.55) 42%, #000 100%);
+      mask-composite: intersect;
+    }
+    @media (max-width: 1023px) {
+      .matrix-bg {
+        opacity: .45;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 80%, transparent 100%);
+        mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 80%, transparent 100%);
+      }
+    }
+  </style>
+  <style>
+    html.modal-open { overflow: hidden; }
+    #stage-modal .stage-overlay { opacity: 0; transition: opacity .25s ease; }
+    #stage-modal .stage-dialog { opacity: 0; transform: translateY(14px) scale(.98); transition: opacity .25s ease, transform .25s ease; }
+    #stage-modal.is-open .stage-overlay { opacity: 1; }
+    #stage-modal.is-open .stage-dialog { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      #stage-modal .stage-overlay, #stage-modal .stage-dialog { transition: none; }
+    }
+  </style>
 </head>
 
 <body class="bg-canvas text-ink antialiased">
@@ -467,6 +571,7 @@
   <main>
     <!-- ======================= HERO ======================= -->
     <section id="hero" class="relative flex min-h-[100svh] items-center overflow-hidden pt-32 pb-20 lg:pt-36 lg:pb-24">
+      <canvas id="matrix-bg" class="matrix-bg" aria-hidden="true"></canvas>
       <div class="hero-grid" aria-hidden="true"></div>
       <div
         class="pointer-events-none absolute -top-32 right-[-8rem] h-[28rem] w-[28rem] rounded-full bg-brand/20 blur-[110px]"
@@ -475,7 +580,7 @@
         class="pointer-events-none absolute bottom-[-10rem] left-[-10rem] h-[30rem] w-[30rem] rounded-full bg-brand/10 blur-[120px]"
         aria-hidden="true"></div>
 
-      <div class="mx-auto grid w-full max-w-7xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8">
+      <div class="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8">
         <!-- Текстовая часть -->
         <div class="reveal">
           <p
@@ -629,7 +734,48 @@
             искать разных специалистов, мы закроем все вопросы.</p>
         </div>
 
-        <div class="mt-14 grid gap-6 md:grid-cols-3">
+        <div class="reveal mt-10">
+          <p class="mb-3 text-center text-sm font-semibold text-ink/55">На каком этапе ваш бизнес?</p>
+          <div class="mx-auto grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          <button type="button" data-stage="open" aria-haspopup="dialog" aria-expanded="false"
+            class="group flex items-center gap-3 rounded-2xl border border-line bg-surface p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-brand/60 hover:shadow-lg hover:shadow-brand/10 last:col-span-2 sm:last:col-span-1">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand">
+              <i data-lucide="rocket" class="h-5 w-5"></i>
+            </span>
+            <span class="min-w-0"><span class="block text-sm font-extrabold leading-tight">Открываю бизнес</span><span class="mt-0.5 block text-xs text-ink/55">от 0 до 6 месяцев</span></span>
+          </button>
+          <button type="button" data-stage="start" aria-haspopup="dialog" aria-expanded="false"
+            class="group flex items-center gap-3 rounded-2xl border border-line bg-surface p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-brand/60 hover:shadow-lg hover:shadow-brand/10 last:col-span-2 sm:last:col-span-1">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand">
+              <i data-lucide="sprout" class="h-5 w-5"></i>
+            </span>
+            <span class="min-w-0"><span class="block text-sm font-extrabold leading-tight">Только начал</span><span class="mt-0.5 block text-xs text-ink/55">до 12 месяцев</span></span>
+          </button>
+          <button type="button" data-stage="running" aria-haspopup="dialog" aria-expanded="false"
+            class="group flex items-center gap-3 rounded-2xl border border-line bg-surface p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-brand/60 hover:shadow-lg hover:shadow-brand/10 last:col-span-2 sm:last:col-span-1">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand">
+              <i data-lucide="briefcase" class="h-5 w-5"></i>
+            </span>
+            <span class="min-w-0"><span class="block text-sm font-extrabold leading-tight">Бизнес работает</span><span class="mt-0.5 block text-xs text-ink/55">от 12 месяцев</span></span>
+          </button>
+          <button type="button" data-stage="closing" aria-haspopup="dialog" aria-expanded="false"
+            class="group flex items-center gap-3 rounded-2xl border border-line bg-surface p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-brand/60 hover:shadow-lg hover:shadow-brand/10 last:col-span-2 sm:last:col-span-1">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand">
+              <i data-lucide="archive" class="h-5 w-5"></i>
+            </span>
+            <span class="min-w-0"><span class="block text-sm font-extrabold leading-tight">Закрываю бизнес</span><span class="mt-0.5 block text-xs text-ink/55">ликвидация</span></span>
+          </button>
+          <button type="button" data-stage="pros" aria-haspopup="dialog" aria-expanded="false"
+            class="group flex items-center gap-3 rounded-2xl border border-line bg-surface p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-brand/60 hover:shadow-lg hover:shadow-brand/10 last:col-span-2 sm:last:col-span-1">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand transition duration-300 group-hover:bg-brand group-hover:text-on-brand">
+              <i data-lucide="graduation-cap" class="h-5 w-5"></i>
+            </span>
+            <span class="min-w-0"><span class="block text-sm font-extrabold leading-tight">Специалистам</span><span class="mt-0.5 block text-xs text-ink/55">для профессионалов</span></span>
+          </button>
+          </div>
+        </div>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
           <!-- Бухгалтерский учёт -->
           <article id="svc-accounting"
             class="card reveal group relative flex flex-col rounded-3xl border border-line bg-surface p-8 transition duration-300 hover:-translate-y-1.5 hover:border-brand/50 hover:shadow-2xl hover:shadow-brand/10">
@@ -2486,6 +2632,309 @@
       });
 
       render();
+    })();
+  </script>
+  <script>
+    // ===== Фон hero: падающие цифры в стиле «Матрицы» =====
+    (() => {
+      const hero = document.getElementById('hero');
+      const cv = document.getElementById('matrix-bg');
+      if (!hero || !cv || !cv.getContext) return;
+      const ctx = cv.getContext('2d');
+
+      // Настройки — меняйте здесь. color: null = цвет темы сайта, либо свой, например '#22e522'.
+      const CFG = {
+        color: null,
+        layers: [ // от дальнего к ближнему: size — размер цифры (px), speed — скорость (px/с), trail — длина хвоста (цифр)
+          { size: 15, speed: [50, 100], trail: [10, 18], alpha: 0.3, density: 0.5 },
+          { size: 26, speed: [90, 160], trail: [8, 16], alpha: 0.55, density: 0.42 },
+          { size: 44, speed: [130, 230], trail: [6, 12], alpha: 0.95, density: 0.3 }
+        ]
+      };
+      const REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const ROWS = 48; // длина «ленты» цифр в колонке
+      let W = 0, H = 0, dpr = 1, cols = [], layers = [], raf = 0, last = 0, visible = true, A = 1;
+
+      const rnd = (a, b) => a + Math.random() * (b - a);
+      const mix = (hex, to, k) => {
+        const p = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+        const a = p(hex), b = p(to);
+        return '#' + a.map((v, i) => Math.round(v + (b[i] - v) * k).toString(16).padStart(2, '0')).join('');
+      };
+      function themeColor() {
+        if (CFG.color) return CFG.color;
+        const v = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim();
+        return /^#[0-9a-f]{6}$/i.test(v) ? v : '#3dd9a0';
+      }
+
+      function buildSprites(scale) {
+        const dark = document.documentElement.dataset.theme !== 'light';
+        const body = themeColor();
+        const head = dark ? mix(body, '#ffffff', 0.6) : mix(body, '#000000', 0.35);
+        A = dark ? 1 : 0.6;
+        layers = CFG.layers.map((L) => {
+          const size = Math.round(L.size * scale), px = Math.max(8, Math.round(size * dpr));
+          const make = (color) => Array.from({ length: 10 }, (_, d) => {
+            const c = document.createElement('canvas'); c.width = c.height = px;
+            const g = c.getContext('2d');
+            g.font = '600 ' + Math.round(px * 0.92) + "px Manrope, ui-sans-serif, system-ui, sans-serif";
+            g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = color;
+            g.fillText(String(d), px / 2, px / 2 + px * 0.04);
+            return c;
+          });
+          return Object.assign({}, L, { size, bodyS: make(body), headS: make(head) });
+        });
+      }
+
+      function spawn(c, initial) {
+        const L = layers[c.l];
+        c.speed = rnd(L.speed[0], L.speed[1]);
+        c.trail = Math.round(rnd(L.trail[0], L.trail[1]));
+        c.y = initial ? rnd(-L.size * c.trail, H + L.size * c.trail) : -rnd(0, H * 0.6) - L.size;
+      }
+
+      function layout() {
+        const r = hero.getBoundingClientRect();
+        W = Math.max(1, Math.round(r.width)); H = Math.max(1, Math.round(r.height));
+        dpr = Math.min(2, window.devicePixelRatio || 1);
+        cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+        const small = W < 640;
+        buildSprites(small ? 0.75 : 1);
+        cols = [];
+        layers.forEach((L, li) => {
+          const n = Math.floor(W / L.size), dens = L.density * (small ? 0.7 : 1);
+          for (let i = 0; i < n; i++) {
+            if (Math.random() > dens) continue;
+            const c = { l: li, x: i * L.size, d: Uint8Array.from({ length: ROWS }, () => (Math.random() * 10) | 0), y: 0, speed: 0, trail: 0 };
+            spawn(c, true); cols.push(c);
+          }
+        });
+        draw();
+      }
+
+      function draw() {
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.clearRect(0, 0, W, H);
+        for (const c of cols) {
+          const L = layers[c.l], s = L.size, headRow = Math.floor(c.y / s);
+          for (let k = 0; k < c.trail; k++) {
+            const row = headRow - k, py = row * s;
+            if (py < -s || py > H) continue;
+            ctx.globalAlpha = Math.pow(1 - k / c.trail, 1.6) * L.alpha * A;
+            const d = c.d[((row % ROWS) + ROWS) % ROWS];
+            ctx.drawImage((k === 0 ? L.headS : L.bodyS)[d], c.x, py, s, s);
+          }
+        }
+        ctx.globalAlpha = 1;
+      }
+
+      function frame(ts) {
+        raf = 0;
+        if (!visible || document.hidden) return;
+        const dt = Math.min(0.05, (ts - last) / 1000 || 0.016); last = ts;
+        for (const c of cols) {
+          c.y += c.speed * dt;
+          if (Math.random() < 0.12) c.d[(Math.random() * ROWS) | 0] = (Math.random() * 10) | 0;
+          if (c.y - c.trail * layers[c.l].size > H) spawn(c, false);
+        }
+        draw();
+        raf = requestAnimationFrame(frame);
+      }
+      const start = () => { if (!REDUCED && !raf && visible && !document.hidden) { last = performance.now(); raf = requestAnimationFrame(frame); } };
+
+      layout();
+      start();
+
+      let t = 0;
+      new ResizeObserver(() => { clearTimeout(t); t = setTimeout(layout, 150); }).observe(hero);
+      new IntersectionObserver((e) => { visible = e[0].isIntersecting; if (visible) start(); }, { threshold: 0 }).observe(hero);
+      document.addEventListener('visibilitychange', start);
+      new MutationObserver(layout).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    })();
+  </script>
+
+  <!-- Модалка этапа бизнеса -->
+  <div id="stage-modal" class="fixed inset-0 z-[90] flex items-center justify-center p-3 sm:p-6" hidden>
+    <div class="stage-overlay absolute inset-0 bg-black/70 backdrop-blur-sm" data-modal-close></div>
+    <div role="dialog" aria-modal="true" aria-labelledby="stage-title" tabindex="-1"
+      class="stage-dialog relative z-10 flex max-h-[92dvh] w-full max-w-5xl flex-col overflow-y-auto rounded-3xl border border-line bg-canvas shadow-2xl outline-none lg:flex-row">
+      <button type="button" data-modal-close aria-label="Закрыть"
+        class="btn btn-ghost btn-circle btn-sm absolute right-3 top-3 z-10"><i data-lucide="x" class="h-5 w-5"></i></button>
+
+      <div class="p-6 sm:p-8 lg:flex-1">
+        <span id="stage-badge" class="badge border-line bg-surface text-ink/60"></span>
+        <h2 id="stage-title" class="mt-3 pr-8 text-2xl font-extrabold tracking-tight sm:text-3xl"></h2>
+        <p id="stage-intro" class="mt-3 max-w-xl leading-relaxed text-ink/65"></p>
+        <div id="stage-groups" class="mt-6 grid gap-6 sm:grid-cols-2"></div>
+      </div>
+
+      <div class="border-t border-line bg-surface/50 p-6 sm:p-8 lg:w-[22rem] lg:shrink-0 lg:border-l lg:border-t-0">
+        <h3 class="text-xl font-extrabold">Попробуйте нас в деле</h3>
+        <p class="mt-2 text-sm text-ink/65">Оставьте заявку — наш менеджер перезвонит вам</p>
+        <ul class="mt-3 space-y-1.5 text-sm">
+          <li class="flex items-start gap-2"><i data-lucide="check" class="mt-0.5 h-4 w-4 shrink-0 text-brand"></i><span class="text-ink/75">Ответим на любые вопросы</span></li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="mt-0.5 h-4 w-4 shrink-0 text-brand"></i><span class="text-ink/75">Подберём подходящий тариф</span></li>
+        </ul>
+
+        <form id="stage-form" class="mt-5 space-y-3" action="#" method="post">
+          <input type="hidden" name="stage" id="stage-stage" value="" />
+          <input type="text" name="name" required placeholder="Имя" aria-label="Имя" autocomplete="name" class="input w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25" />
+          <input type="email" name="email" placeholder="E-mail" aria-label="E-mail" autocomplete="email" class="input w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25" />
+          <input type="tel" name="phone" required placeholder="Телефон" aria-label="Телефон" autocomplete="tel" class="input w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25" />
+          <label class="flex cursor-pointer items-start gap-2.5 text-xs leading-snug text-ink/65">
+            <input type="checkbox" name="consent" required class="checkbox checkbox-primary checkbox-xs mt-0.5" />
+            <span>Даю <a href="#" class="underline decoration-line underline-offset-2 transition hover:text-brand">согласие на обработку персональных данных</a></span>
+          </label>
+          <label class="flex cursor-pointer items-start gap-2.5 text-xs leading-snug text-ink/65">
+            <input type="checkbox" name="ads" class="checkbox checkbox-primary checkbox-xs mt-0.5" />
+            <span>Даю <a href="#" class="underline decoration-line underline-offset-2 transition hover:text-brand">согласие на получение рекламы</a></span>
+          </label>
+          <button type="submit" class="btn btn-primary btn-block rounded-xl font-bold shadow-lg shadow-brand/25">Оставить заявку</button>
+          <p class="text-[11px] leading-tight text-ink/45">Демонстрационная форма: данные никуда не отправляются.</p>
+        </form>
+
+        <div id="stage-success" class="mt-5 rounded-2xl border border-brand/30 bg-brand/10 p-4" role="status" hidden>
+          <p class="text-lg font-extrabold">Спасибо за обращение!</p>
+          <p class="mt-2 text-sm leading-relaxed text-ink/75">Мы получили вашу заявку. В ближайшее время наш менеджер свяжется с вами. Удачного дня!</p>
+          <button type="button" id="stage-again" class="btn btn-outline btn-sm mt-3 rounded-xl font-bold">Отправить ещё раз</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== Этапы бизнеса: кнопки и модалка =====
+    (() => {
+      const modal = document.getElementById('stage-modal');
+      if (!modal) return;
+      const dlg = modal.querySelector('[role=dialog]');
+      const $ = (id) => document.getElementById(id);
+      const REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+      // Содержимое этапов — меняйте здесь. go: 'pricing:<id таба>' (откроет тариф), либо якорь '#calc', '#contacts' и т. п.
+      const STAGES = {
+        open: {
+          badge: 'от 0 до 6 месяцев', title: 'Открываю бизнес',
+          intro: 'Поможем пройти путь от идеи до первой отчётности без ошибок и лишних затрат времени.',
+          groups: [
+            { h: 'Первые шаги', items: [['Регистрация ИП', 'pricing:registration'], ['Регистрация ООО', 'pricing:registration'], ['Подбор системы налогообложения', '#calc'], ['Постановка на учёт', 'pricing:accounting']] },
+            { h: 'Передать бухгалтерию', items: [['Бухгалтерское обслуживание ИП и ООО', '#calc'], ['Рассчитать стоимость онлайн', '#calc'], ['Бесплатная консультация', '#contacts']] }
+          ]
+        },
+        start: {
+          badge: 'до 12 месяцев', title: 'Только начал',
+          intro: 'Первые отчёты, первые сотрудники, первые вопросы от налоговой. Возьмём рутину на себя.',
+          groups: [
+            { h: 'Передать бухгалтерию', items: [['Бухгалтерское обслуживание ИП', 'pricing:accounting'], ['Бухгалтерское обслуживание ООО', 'pricing:accounting'], ['Нулевая отчётность', 'pricing:zero'], ['Рассчитать стоимость онлайн', '#calc']] },
+            { h: 'Кадры и диагностика', items: [['Приём первого сотрудника', 'pricing:consulting'], ['Расчёт заработной платы', 'pricing:payroll'], ['Проверка учёта и консультации', 'pricing:consalting'], ['Задать вопрос бухгалтеру', '#contacts']] }
+          ]
+        },
+        running: {
+          badge: 'от 12 месяцев', title: 'Бизнес работает',
+          intro: 'Бизнес растёт, а учёт должен успевать за ним: сопровождение, оптимизация и контроль рисков.',
+          groups: [
+            { h: 'Передать бухгалтерию', items: [['Бухгалтерское сопровождение', 'pricing:accounting'], ['Годовая отчётность', 'pricing:accounting'], ['Налоговая оптимизация', '#svc-finance']] },
+            { h: 'Рост эффективности', items: [['Финансовый анализ', '#svc-finance'], ['Кадры и зарплата', 'pricing:payroll'], ['Рассчитать стоимость онлайн', '#calc']] },
+            { h: 'Типичные ловушки', items: [['Восстановление учёта', 'pricing:other'], ['Налоговые риски и требования ФНС', 'pricing:consalting']] }
+          ]
+        },
+        closing: {
+          badge: 'ликвидация', title: 'Закрываю бизнес',
+          intro: 'Закроем ИП или ликвидируем ООО законно и аккуратно: с отчётностью, расчётами и записью в реестре.',
+          groups: [
+            { h: 'Закрытие и ликвидация', items: [['Закрытие ИП', 'pricing:registration'], ['Ликвидация ООО', 'pricing:registration'], ['Ликвидационная отчётность', 'pricing:registration']] },
+            { h: 'Перед закрытием', items: [['Сверка расчётов с бюджетом', 'pricing:other'], ['Расчёт с сотрудниками', 'pricing:payroll'], ['Консультация по закрытию', '#contacts']] }
+          ]
+        },
+        pros: {
+          badge: 'для профессионалов', title: 'Специалистам',
+          intro: 'Для бухгалтеров, кадровиков и юристов: разовые услуги и экспертная помощь по сложным случаям.',
+          groups: [
+            { h: 'Бухгалтерам', items: [['Расчёт заработной платы на аутсорсе', 'pricing:payroll'], ['Прочие бухгалтерские услуги', 'pricing:other']] },
+            { h: 'Кадровикам', items: [['Кадровый учёт и документы', 'pricing:consulting']] },
+            { h: 'Юристам и партнёрам', items: [['Консультации экспертов', 'pricing:consalting'], ['Сотрудничество с бюро', '#contacts']] }
+          ]
+        }
+      };
+
+      let last = null, closeT = 0;
+
+      function go(target) {
+        close(false);
+        if (target.indexOf('pricing:') === 0) {
+          const tab = document.querySelector('[data-price-tab="' + target.slice(8) + '"]');
+          if (tab) tab.click();
+          target = '#pricing';
+        }
+        const dest = document.querySelector(target);
+        if (dest) requestAnimationFrame(() => dest.scrollIntoView());
+      }
+
+      function render(key) {
+        const s = STAGES[key];
+        $('stage-badge').textContent = s.badge;
+        $('stage-title').textContent = s.title;
+        $('stage-intro').textContent = s.intro;
+        $('stage-stage').value = s.title;
+        const box = $('stage-groups'); box.textContent = '';
+        s.groups.forEach((g) => {
+          const col = el('div');
+          col.append(el('p', 'mb-2 text-xs font-bold uppercase tracking-[0.16em] text-ink/50', g.h));
+          const ul = el('ul', 'space-y-1.5');
+          g.items.forEach(([label, to]) => {
+            const li = el('li'); const b = el('button', 'group flex w-full items-center justify-between gap-3 rounded-xl border border-line bg-surface/60 px-3.5 py-2.5 text-left text-sm font-semibold transition hover:border-brand hover:text-brand');
+            b.type = 'button'; b.append(el('span', '', label), el('span', 'shrink-0 text-brand transition-transform group-hover:translate-x-0.5', '→'));
+            b.addEventListener('click', () => go(to));
+            li.append(b); ul.append(li);
+          });
+          col.append(ul); box.append(col);
+        });
+      }
+
+      function open(key, trigger) {
+        clearTimeout(closeT);
+        render(key);
+        $('stage-form').hidden = false; $('stage-success').hidden = true;
+        last = trigger || null;
+        if (last) last.setAttribute('aria-expanded', 'true');
+        modal.hidden = false;
+        document.documentElement.classList.add('modal-open');
+        requestAnimationFrame(() => { modal.classList.add('is-open'); dlg.focus(); dlg.scrollTop = 0; });
+      }
+
+      function close(restoreFocus) {
+        if (modal.hidden) return;
+        modal.classList.remove('is-open');
+        document.documentElement.classList.remove('modal-open');
+        clearTimeout(closeT);
+        closeT = setTimeout(() => { modal.hidden = true; }, REDUCED ? 0 : 250);
+        if (last) { last.setAttribute('aria-expanded', 'false'); if (restoreFocus !== false) last.focus(); }
+      }
+
+      document.querySelectorAll('[data-stage]').forEach((b) => b.addEventListener('click', () => open(b.dataset.stage, b)));
+      modal.querySelectorAll('[data-modal-close]').forEach((b) => b.addEventListener('click', () => close()));
+      document.addEventListener('keydown', (e) => {
+        if (modal.hidden) return;
+        if (e.key === 'Escape') { close(); return; }
+        if (e.key !== 'Tab') return;
+        const f = Array.from(dlg.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),textarea,select,[tabindex]:not([tabindex="-1"])')).filter((n) => n.offsetParent !== null);
+        if (!f.length) return;
+        const a = f[0], z = f[f.length - 1];
+        if (e.shiftKey && (document.activeElement === a || document.activeElement === dlg)) { e.preventDefault(); z.focus(); }
+        else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+      });
+
+      // Демо-форма
+      const form = $('stage-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        const f = new FormData(form);
+        console.log('Демо-заявка (никуда не отправлена):', Object.fromEntries(f.entries()));
+        form.hidden = true; $('stage-success').hidden = false;
+      });
+      $('stage-again').addEventListener('click', () => { form.reset(); $('stage-stage').value = $('stage-title').textContent; form.hidden = false; $('stage-success').hidden = true; });
     })();
   </script>
 </body>
