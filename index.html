@@ -379,19 +379,21 @@
       </div>
     </nav>
 
+  </header>
+
     <!-- Мобильное меню (drawer) -->
     <div x-data class="lg:hidden" x-effect="document.body.classList.toggle('overflow-hidden', $store.ui.mobileOpen)"
       @keydown.escape.window="$store.ui.mobileOpen = false">
       <div x-show="$store.ui.mobileOpen" x-cloak x-transition.opacity.duration.300ms
-        class="fixed inset-0 z-[70] bg-black/60 backdrop-blur-sm" @click="$store.ui.mobileOpen = false"
+        class="fixed inset-0 z-[70] bg-black/70 backdrop-blur-sm" @click="$store.ui.mobileOpen = false"
         aria-hidden="true"></div>
       <aside x-show="$store.ui.mobileOpen" x-cloak role="dialog" aria-modal="true" aria-label="Меню"
         x-transition:enter="transition ease-out duration-300" x-transition:enter-start="translate-x-full"
         x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-200"
         x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
-        class="fixed inset-y-0 right-0 z-[80] flex w-[min(22rem,92vw)] flex-col bg-canvas shadow-2xl">
-        <div x-data="{ sub: false }" class="flex h-full flex-col">
-          <div class="flex items-center justify-between border-b border-line px-5 py-4">
+        class="fixed inset-y-0 right-0 z-[80] flex h-[100dvh] w-[min(20rem,86vw)] flex-col border-l border-line bg-canvas shadow-2xl">
+        <div x-data="{ sub: false }" class="flex h-full min-h-0 flex-col bg-canvas">
+          <div class="flex shrink-0 items-center justify-between border-b border-line px-4 py-3">
             <span class="flex items-center gap-2.5">
               <span
                 class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-brand to-emerald-700 font-extrabold text-on-brand">A</span>
@@ -402,65 +404,65 @@
               <i data-lucide="x" class="h-5 w-5"></i>
             </button>
           </div>
-          <nav class="flex-1 overflow-y-auto px-4 py-4">
-            <ul class="flex flex-col gap-1 text-base font-semibold">
+          <nav class="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-3">
+            <ul class="flex flex-col gap-0.5 text-[15px] font-semibold">
               <li>
                 <button type="button"
-                  class="flex w-full items-center justify-between rounded-xl px-4 py-3 transition hover:bg-surface"
+                  class="flex w-full items-center justify-between rounded-xl px-3.5 py-2.5 transition hover:bg-surface"
                   @click="sub = !sub" :aria-expanded="sub">
                   Услуги
                   <span class="transition-transform duration-200" :class="sub && 'rotate-180'"><i
                       data-lucide="chevron-down" class="h-4 w-4"></i></span>
                 </button>
                 <ul x-show="sub" x-cloak x-transition
-                  class="mt-1 mb-2 ml-3 flex flex-col gap-0.5 border-l border-line pl-3 text-sm font-medium text-ink/70">
+                  class="mt-1 mb-1.5 ml-3 flex flex-col gap-0 border-l border-line pl-2.5 text-[13px] font-medium text-ink/70">
                   <li><a href="#services" @click="$store.ui.mobileOpen = false"
-                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Бухгалтерский
+                      class="block rounded-lg px-3 py-1.5 transition hover:bg-surface hover:text-brand">Бухгалтерский
                       учёт</a></li>
                   <li><a href="#services" @click="$store.ui.mobileOpen = false"
-                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Финансовый
+                      class="block rounded-lg px-3 py-1.5 transition hover:bg-surface hover:text-brand">Финансовый
                       анализ</a></li>
                   <li><a href="#services" @click="$store.ui.mobileOpen = false"
-                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Юридическое
+                      class="block rounded-lg px-3 py-1.5 transition hover:bg-surface hover:text-brand">Юридическое
                       сопровождение</a></li>
                   <li><a href="#services" @click="$store.ui.mobileOpen = false"
-                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Управленческий
+                      class="block rounded-lg px-3 py-1.5 transition hover:bg-surface hover:text-brand">Управленческий
                       учёт</a></li>
                   <li><a href="#services" @click="$store.ui.mobileOpen = false"
-                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Налоговое
+                      class="block rounded-lg px-3 py-1.5 transition hover:bg-surface hover:text-brand">Налоговое
                       консультирование</a></li>
                   <li><a href="#services" @click="$store.ui.mobileOpen = false"
-                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Отчётность и
+                      class="block rounded-lg px-3 py-1.5 transition hover:bg-surface hover:text-brand">Отчётность и
                       аудит</a></li>
                   <li><a href="#services" @click="$store.ui.mobileOpen = false"
-                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Автоматизация
+                      class="block rounded-lg px-3 py-1.5 transition hover:bg-surface hover:text-brand">Автоматизация
                       учёта</a></li>
                   <li><a href="#services" @click="$store.ui.mobileOpen = false"
-                      class="block rounded-lg px-3 py-2 transition hover:bg-surface hover:text-brand">Фонды развития</a>
+                      class="block rounded-lg px-3 py-1.5 transition hover:bg-surface hover:text-brand">Фонды развития</a>
                   </li>
                 </ul>
               </li>
               <li><a href="#projects" @click="$store.ui.mobileOpen = false"
-                  class="block rounded-xl px-4 py-3 transition hover:bg-surface">Проекты</a></li>
+                  class="block rounded-xl px-3.5 py-2.5 transition hover:bg-surface">Проекты</a></li>
               <li><a href="#calc" @click="$store.ui.mobileOpen = false"
-                  class="block rounded-xl px-4 py-3 transition hover:bg-surface">Калькулятор</a></li>
+                  class="block rounded-xl px-3.5 py-2.5 transition hover:bg-surface">Калькулятор</a></li>
               <li><a href="#about" @click="$store.ui.mobileOpen = false"
-                  class="block rounded-xl px-4 py-3 transition hover:bg-surface">О нас</a></li>
+                  class="block rounded-xl px-3.5 py-2.5 transition hover:bg-surface">О нас</a></li>
               <li><a href="#contacts" @click="$store.ui.mobileOpen = false"
-                  class="block rounded-xl px-4 py-3 transition hover:bg-surface">Контакты</a></li>
+                  class="block rounded-xl px-3.5 py-2.5 transition hover:bg-surface">Контакты</a></li>
             </ul>
           </nav>
-          <div class="flex flex-col gap-3 border-t border-line p-4">
-            <a href="tel:+79030099951" class="btn btn-outline w-full rounded-xl font-bold">
+          <div class="flex shrink-0 flex-col gap-2 border-t border-line bg-canvas p-3 pb-[max(.75rem,env(safe-area-inset-bottom))]">
+            <a href="tel:+79030099951" class="btn btn-outline h-10 w-full rounded-xl font-bold">
               <i data-lucide="phone" class="h-4 w-4 text-brand"></i>+7 903-009-99-51
             </a>
             <a href="#contacts" @click="$store.ui.mobileOpen = false"
-              class="btn btn-primary w-full rounded-xl font-bold">Консультация</a>
+              class="btn btn-primary h-10 w-full rounded-xl font-bold">Консультация</a>
           </div>
         </div>
       </aside>
     </div>
-  </header>
+
 
   <main>
     <!-- ======================= HERO ======================= -->
@@ -906,67 +908,86 @@
         aria-hidden="true"></div>
 
       <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" x-data="calc()">
-        <div class="mx-auto max-w-3xl text-center">
+        <div class="mx-auto max-w-4xl text-center">
           <p class="text-sm font-bold uppercase tracking-[0.22em] text-brand">/ Калькулятор /</p>
-          <h2 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">Рассчитайте стоимость
-            бухгалтерии за минуту</h2>
-          <p class="mt-5 text-lg leading-relaxed text-ink/65">Отметьте, что есть в вашем бизнесе, и сразу увидите состав
-            услуг и сумму в месяц. Мы перезвоним и уточним детали.</p>
+          <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Рассчитайте стоимость бухгалтерии за минуту</h2>
+          <p class="mt-1 text-sm leading-relaxed text-ink/65">Отметьте, что есть в вашем бизнесе, и сразу увидите состав услуг и сумму. Мы перезвоним и уточним детали.</p>
         </div>
 
-        <div class="mt-5 grid items-stretch gap-4 lg:grid-cols-[1.5fr_1fr]">
+        <div class="mt-4 grid items-stretch gap-4 lg:grid-cols-[1.5fr_1fr]">
 
           <!-- ===== ПАРАМЕТРЫ ===== -->
-          <div class="space-y-4 rounded-3xl border border-line bg-surface p-5">
-            <div class="grid gap-3 sm:grid-cols-2">
+          <div class="space-y-3.5 rounded-3xl border border-line bg-surface p-5">
+            <div class="grid gap-3 sm:grid-cols-[auto_1fr]">
               <div>
-                <p class="mb-2 text-xs font-bold text-ink/55">Форма собственности</p>
+                <p class="mb-1.5 text-xs font-bold text-ink/55">Форма собственности</p>
                 <div class="grid grid-cols-2 gap-1 rounded-xl border border-line bg-canvas p-1" role="radiogroup"
                   aria-label="Форма собственности">
                   <template x-for="o in owners" :key="o.id">
                     <button type="button" role="radio" :aria-checked="owner === o.id" @click="setOwner(o.id)"
-                      :title="o.hint" class="rounded-lg py-2 text-sm font-bold transition"
+                      :title="o.hint" class="rounded-lg px-5 py-1.5 text-sm font-bold transition"
                       :class="owner === o.id ? 'bg-brand text-on-brand shadow' : 'text-ink/65 hover:text-brand'"
                       x-text="o.name"></button>
                   </template>
                 </div>
               </div>
               <div>
-                <p class="mb-2 text-xs font-bold text-ink/55">Деятельность</p>
-                <label
-                  class="flex h-[42px] cursor-pointer items-center justify-between gap-3 rounded-xl border border-line bg-canvas px-3">
-                  <span class="text-sm font-bold">Нет деятельности <span
-                      class="font-medium text-ink/50">(нулевая)</span></span>
-                  <input type="checkbox" class="toggle toggle-primary toggle-sm" x-model="zero"
-                    aria-label="Нет деятельности" />
-                </label>
-              </div>
-            </div>
-
-            <div class="space-y-4 transition" :class="zero && 'pointer-events-none opacity-40'" :aria-disabled="zero">
-              <div>
-                <p class="mb-2 text-xs font-bold text-ink/55">Система налогообложения</p>
-                <div class="flex flex-wrap gap-1.5" role="radiogroup" aria-label="Система налогообложения">
-                  <template x-for="t in availableTaxes" :key="t.id">
-                    <button type="button" role="radio" :aria-checked="tax === t.id" @click="tax = t.id"
-                      class="rounded-lg border px-3 py-2 text-sm font-bold transition"
-                      :class="tax === t.id ? 'border-brand bg-brand text-on-brand' : 'border-line bg-canvas text-ink/70 hover:border-brand hover:text-brand'"
-                      x-text="t.name"></button>
+                <p class="mb-1.5 text-xs font-bold text-ink/55">Услуга</p>
+                <div class="grid grid-cols-1 gap-1 rounded-xl border border-line bg-canvas p-1 sm:grid-cols-3" role="radiogroup"
+                  aria-label="Услуга">
+                  <template x-for="m in modes" :key="m.id">
+                    <button type="button" role="radio" :aria-checked="mode === m.id" @click="setMode(m.id)"
+                      class="rounded-lg px-3 py-2.5 text-sm font-bold leading-tight transition sm:px-1 sm:py-1.5"
+                      :class="mode === m.id ? 'bg-brand text-on-brand shadow' : 'text-ink/65 hover:text-brand'"
+                      x-text="m.name"></button>
                   </template>
                 </div>
               </div>
+            </div>
 
-              <div class="grid grid-cols-3 gap-2">
+            <div>
+              <p class="mb-1.5 text-xs font-bold text-ink/55">Система налогообложения</p>
+              <div class="flex flex-col gap-1.5 sm:flex-row sm:flex-wrap" role="radiogroup" aria-label="Система налогообложения">
+                <template x-for="t in availableTaxes" :key="t.id">
+                  <button type="button" role="radio" :aria-checked="tax === t.id" @click="tax = t.id"
+                    class="w-full rounded-lg border px-3 py-2.5 text-left text-sm font-bold leading-tight transition sm:w-auto sm:py-1.5 sm:text-center"
+                    :class="tax === t.id ? 'border-brand bg-brand text-on-brand' : 'border-line bg-canvas text-ink/70 hover:border-brand hover:text-brand'"
+                    x-text="t.name"></button>
+                </template>
+              </div>
+            </div>
+
+            <div class="transition" :class="mode === 'zero' && 'pointer-events-none opacity-40'" :aria-disabled="mode === 'zero'">
+              <div class="mb-2 flex flex-col gap-0.5 sm:mb-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                <p class="text-xs font-bold text-ink/55"
+                  x-text="mode === 'restore' ? 'Документов для восстановления учёта' : 'Первичных документов'"></p>
+                <p class="text-sm font-extrabold text-brand" x-text="mode === 'zero' ? 'до 5 документов в квартал' : steps[docs].full"></p>
+              </div>
+              <input type="range" min="0" :max="steps.length - 1" step="1" x-model.number="docs"
+                class="range range-primary range-sm w-full sm:range-xs" aria-label="Количество документов" />
+              <div class="relative mt-1.5 h-5 sm:mt-1 sm:h-4">
+                <template x-for="(s, i) in steps" :key="s.tick">
+                  <button type="button" @click="docs = i" :style="tickStyle(i)"
+                    class="absolute whitespace-nowrap py-1 text-[11px] font-semibold leading-none transition"
+                    :class="[docs === i ? 'text-brand' : 'text-ink/50 hover:text-brand', (i % 2 === 0 || i === steps.length - 1) ? '' : 'hidden sm:block']" x-text="s.tick"></button>
+                </template>
+              </div>
+            </div>
+
+            <div class="space-y-3.5 transition" :class="mode !== 'keep' && 'pointer-events-none opacity-40'" :aria-disabled="mode !== 'keep'">
+              <div class="grid grid-cols-1 gap-2 sm:grid-cols-3">
                 <template x-for="s in steppers" :key="s.key">
-                  <div class="rounded-xl border border-line bg-canvas p-3">
-                    <p class="text-sm font-bold leading-tight" x-text="s.label"></p>
-                    <p class="mt-0.5 text-[11px] leading-tight text-ink/50" x-text="s.hint"></p>
-                    <div class="mt-2 flex items-center justify-between">
-                      <button type="button" class="btn btn-square btn-xs rounded-md border-line bg-surface"
+                  <div class="flex items-center justify-between gap-2 rounded-xl border border-line bg-canvas px-3 py-2">
+                    <div class="min-w-0">
+                      <p class="text-sm font-bold leading-tight sm:truncate" x-text="s.label"></p>
+                      <p class="text-xs leading-tight text-ink/55 sm:truncate sm:text-[11px]" :title="s.hint" x-text="s.hint"></p>
+                    </div>
+                    <div class="flex shrink-0 items-center gap-1.5">
+                      <button type="button" class="btn btn-square btn-sm rounded-md border-line bg-surface sm:btn-xs"
                         @click="step(s.key, -1)" :aria-label="'Уменьшить: ' + s.label"
                         :disabled="$data[s.key] <= s.min">−</button>
-                      <span class="text-xl font-extrabold tabular-nums" x-text="$data[s.key]"></span>
-                      <button type="button" class="btn btn-square btn-xs rounded-md border-line bg-surface"
+                      <span class="w-6 text-center text-lg font-extrabold tabular-nums" x-text="$data[s.key]"></span>
+                      <button type="button" class="btn btn-square btn-sm rounded-md border-line bg-surface sm:btn-xs"
                         @click="step(s.key, 1)" :aria-label="'Увеличить: ' + s.label"
                         :disabled="$data[s.key] >= s.max">+</button>
                     </div>
@@ -975,26 +996,15 @@
               </div>
 
               <div>
-                <p class="mb-2 text-xs font-bold text-ink/55">Первичных документов в месяц</p>
-                <div class="grid grid-cols-4 gap-1.5">
-                  <template x-for="(d, i) in docsTiers" :key="i">
-                    <button type="button" @click="docs = i" class="rounded-lg border py-2 text-sm font-bold transition"
-                      :class="docs === i ? 'border-brand bg-brand text-on-brand' : 'border-line bg-canvas text-ink/70 hover:border-brand hover:text-brand'"
-                      x-text="d.label"></button>
-                  </template>
-                </div>
-              </div>
-
-              <div>
-                <p class="mb-2 text-xs font-bold text-ink/55">Дополнительно</p>
-                <div class="grid grid-cols-2 gap-1.5 sm:grid-cols-3">
+                <p class="mb-1.5 text-xs font-bold text-ink/55">Дополнительно</p>
+                <div class="grid grid-cols-2 gap-1.5 lg:grid-cols-3">
                   <template x-for="f in flagList" :key="f.id">
                     <button type="button" role="switch" :aria-checked="!!flags[f.id]" :disabled="flagOff(f)"
-                      :title="flagOff(f) ? f.need : ''" @click="flags[f.id] = !flags[f.id]"
-                      class="rounded-lg border px-3 py-2 text-left transition disabled:cursor-not-allowed disabled:opacity-40"
+                      :title="flagOff(f) ? f.need : (f.title || f.name)" @click="flags[f.id] = !flags[f.id]"
+                      class="flex flex-col items-start justify-center gap-0.5 rounded-lg border px-3 py-2 text-left transition disabled:cursor-not-allowed disabled:opacity-40 sm:flex-row sm:items-center sm:justify-between sm:gap-2 sm:px-2.5 sm:py-1.5"
                       :class="flags[f.id] && !flagOff(f) ? 'border-brand bg-brand/10' : 'border-line bg-canvas hover:border-brand/50'">
-                      <span class="block text-[13px] font-bold leading-tight" x-text="f.name"></span>
-                      <span class="block text-[11px] text-ink/50" x-text="'+ ' + fmt(f.price) + ' ₽'"></span>
+                      <span class="text-[13px] font-bold leading-tight sm:text-xs lg:truncate" x-text="f.name"></span>
+                      <span class="shrink-0 text-xs text-ink/55 sm:text-[11px]" x-text="flagHint(f)"></span>
                     </button>
                   </template>
                 </div>
@@ -1008,9 +1018,9 @@
             <div class="border-b border-line bg-surface px-5 py-4">
               <div class="flex items-end justify-between gap-3">
                 <div>
-                  <p class="text-xs font-semibold text-ink/60">Стоимость в месяц</p>
-                  <p class="mt-1 text-4xl font-extrabold tracking-tight text-brand"><span :key="total"
-                      class="pop inline-block tabular-nums" x-text="fmt(total) + ' ₽'"></span></p>
+                  <p class="text-xs font-semibold text-ink/60" x-text="unit.head"></p>
+                  <p class="mt-1 text-4xl font-extrabold tracking-tight text-brand"><span :key="totalText"
+                      class="pop inline-block tabular-nums" x-text="totalText"></span></p>
                 </div>
                 <p class="pb-1 text-right text-xs text-ink/60" x-show="discountRate > 0" x-cloak>Экономия<br><span
                     class="font-bold text-brand" x-text="fmt(yearSaving) + ' ₽/год'"></span></p>
@@ -1019,7 +1029,7 @@
 
             <div class="flex flex-1 flex-col px-5 py-4">
               <div class="grid grid-cols-3 gap-1 rounded-xl border border-line bg-surface p-1" role="radiogroup"
-                aria-label="Период оплаты">
+                aria-label="Период оплаты" x-show="mode === 'keep' && unit.key === 'm'">
                 <template x-for="p in periods" :key="p.id">
                   <button type="button" role="radio" :aria-checked="period === p.id" @click="period = p.id"
                     class="rounded-lg px-1 py-1.5 text-xs font-bold transition"
@@ -1028,11 +1038,12 @@
                 </template>
               </div>
 
-              <ul class="mt-3 flex-1 divide-y divide-line text-[13px]">
+              <ul class="mt-3 flex-1 divide-y divide-line overflow-y-auto text-sm lg:max-h-[15rem] lg:text-[13px]">
                 <template x-for="l in lines" :key="l.label">
                   <li class="flex items-start justify-between gap-3 py-1.5">
                     <span class="text-ink/75" x-text="l.label"></span>
-                    <span class="shrink-0 font-bold tabular-nums" x-text="fmt(l.sum) + ' ₽'"></span>
+                    <span class="shrink-0 font-bold tabular-nums" :class="l.sum === null && 'font-semibold text-ink/50'"
+                      x-text="l.sum === null ? l.note : fmt(l.sum) + ' ₽'"></span>
                   </li>
                 </template>
                 <li class="flex items-start justify-between gap-3 py-1.5 text-brand" x-show="discountRate > 0" x-cloak>
@@ -1042,24 +1053,22 @@
               </ul>
 
               <form x-show="!sent" @submit.prevent="sent = true" class="mt-3 space-y-2" action="#" method="post">
-                <div class="grid grid-cols-2 gap-2">
+                <div class="grid grid-cols-1 gap-2 min-[420px]:grid-cols-2">
                   <input type="text" required placeholder="Имя" aria-label="Имя" x-model="name"
                     class="input input-sm h-10 w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25" />
                   <input type="tel" required placeholder="Телефон" aria-label="Телефон"
                     class="input input-sm h-10 w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25" />
                 </div>
                 <button type="submit"
-                  class="btn btn-primary btn-block rounded-xl font-bold shadow-lg shadow-brand/25">Подключиться за <span
-                    x-text="fmt(total)"></span> ₽/мес</button>
-                <p class="text-[11px] leading-tight text-ink/45">Цены демонстрационные. Нажимая кнопку, вы соглашаетесь
+                  class="btn btn-primary btn-block rounded-xl font-bold shadow-lg shadow-brand/25" x-text="cta"></button>
+                <p class="text-[11px] leading-tight text-ink/45">Расчёт предварительный. Нажимая кнопку, вы соглашаетесь
                   с <a href="#"
                     class="underline decoration-line underline-offset-2 transition hover:text-brand">политикой
                     конфиденциальности</a>.</p>
               </form>
               <div x-show="sent" x-cloak role="alert"
                 class="mt-3 rounded-2xl border border-brand/30 bg-brand/10 p-3 text-sm font-semibold leading-relaxed">
-                <span x-text="name"></span>, заявка принята: расчёт на <span x-text="fmt(total)"></span> ₽/мес
-                подтвердим в течение часа.
+                <span x-text="name"></span>, заявка принята: мы перезвоним и подтвердим расчёт.
               </div>
             </div>
           </aside>
@@ -1438,73 +1447,151 @@
   </script>
   <script>
     document.addEventListener('alpine:init', () => {
-      // Демонстрационные тарифы (₽ в месяц) — меняйте здесь
+      // ===== Тарифы из прайс-листа (₽) — меняйте здесь =====
+      // Ведение учёта: первая ступень считается за квартал, остальные — за месяц
+      const TIERS = [
+        { tick: '≤20/кв.', full: 'до 20 документов в квартал' },
+        { tick: '5–15', full: 'от 5 до 15 документов в месяц' },
+        { tick: '16–30', full: 'от 16 до 30 документов в месяц' },
+        { tick: '31–50', full: 'от 31 до 50 документов в месяц' },
+        { tick: '51–70', full: 'от 51 до 70 документов в месяц' },
+        { tick: '71–100', full: 'от 71 до 100 документов в месяц' },
+        { tick: '100–140', full: 'от 100 до 140 документов в месяц' },
+        { tick: '141–180', full: 'от 141 до 180 документов в месяц' },
+        { tick: '181+', full: 'свыше 181 документа в месяц', open: 100, openFrom: 181 }
+      ];
+      const PRICE = { // порядок совпадает с TIERS; ausn — цены появятся позже
+        osno: [15000, 4500, 10000, 14000, 19000, 22000, 26000, 33000, 33000],
+        usn15: [10000, 4000, 8500, 13000, 17000, 20000, 23500, 27000, 27000],
+        usn6: [9500, 3500, 7500, 12000, 16000, 19000, 22000, 26000, 26000],
+        ausn: null
+      };
+      const ZERO = { osno: 3000, usn15: 2500, usn6: 2000, ausn: null }; // нулевая отчётность, за квартал
+      const RSTEPS = [ // восстановление учёта, разово
+        { tick: 'до 50', full: 'до 50 документов' },
+        { tick: '51–100', full: 'от 51 до 100 документов' },
+        { tick: '101–200', full: 'от 101 до 200 документов' },
+        { tick: '200+', full: 'более 200 документов', open: 150, openFrom: 200 }
+      ];
+      const RESTORE = [15000, 30000, 50000, 50000];
+
       Alpine.data('calc', () => ({
-        owner: 'ip', tax: 'usn6', emp: 0, mp: 0, acc: 1, docs: 0, zero: false,
+        owner: 'ip', tax: 'usn6', mode: 'keep', emp: 0, mp: 0, acc: 1, docs: 1,
         period: 'month', sent: false, name: '',
-        flags: { nds: false, ved: false, stat: false, kassa: false, mil: false, kedo: false },
+        flags: {},
 
         owners: [
           { id: 'ip', name: 'ИП', hint: 'Индивидуальный предприниматель' },
           { id: 'ooo', name: 'ООО', hint: 'Общество с ограниченной ответственностью' }
         ],
+        modes: [
+          { id: 'keep', name: 'Ведение учёта' },
+          { id: 'zero', name: 'Нулевая отчётность' },
+          { id: 'restore', name: 'Восстановление' }
+        ],
         taxes: [
-          { id: 'usn6', name: 'УСН «доходы»', ip: 3500, ooo: 7500 },
-          { id: 'usn15', name: 'УСН «доходы минус расходы»', ip: 5500, ooo: 9500 },
-          { id: 'osno', name: 'ОСНО', ip: 9000, ooo: 14000 },
-          { id: 'ausn', name: 'АУСН', ip: 3000, ooo: 5000 },
-          { id: 'patent', name: 'Патент', ip: 3000, ooo: null }
+          { id: 'osno', name: 'ОСНО' },
+          { id: 'usn15', name: 'УСН 15% «доходы минус расходы»' },
+          { id: 'usn6', name: 'УСН 6% («доходы»)' },
+          { id: 'ausn', name: 'АУСН' }
         ],
-        zeroPrice: { ip: 1500, ooo: 3000 },
         steppers: [
-          { key: 'emp', label: 'Сотрудники', hint: '2 500 ₽ + 700 ₽ за чел.', min: 0, max: 50 },
-          { key: 'mp', label: 'Маркетплейсы', hint: '2 000 ₽ за площадку', min: 0, max: 5 },
-          { key: 'acc', label: 'Расчётные счета', hint: '1-й включён, далее 500 ₽', min: 1, max: 10 }
+          { key: 'emp', label: 'Сотрудники', hint: 'по запросу', min: 0, max: 50 },
+          { key: 'mp', label: 'Маркетплейсы', hint: 'по запросу', min: 0, max: 5 },
+          { key: 'acc', label: 'Расчётные счета', hint: '1-й включён, далее +1 000 ₽', min: 1, max: 10 }
         ],
-        docsTiers: [
-          { label: 'до 30', price: 0 }, { label: '31–100', price: 2000 },
-          { label: '101–300', price: 5000 }, { label: 'более 300', price: 9000 }
-        ],
+        // pct — повышающий коэффициент к базе, flat — фиксированная надбавка, без обоих — цена позже
         flagList: [
-          { id: 'nds', name: 'Плачу НДС на УСН', price: 1500, only: ['usn6', 'usn15'], need: 'Только для УСН' },
-          { id: 'kassa', name: 'Онлайн-касса', price: 1000 },
-          { id: 'ved', name: 'Импорт или экспорт', price: 4000 },
-          { id: 'stat', name: 'Статистическая отчётность', price: 800 },
-          { id: 'mil', name: 'Воинский учёт', price: 500, emp: true, need: 'Нужен хотя бы 1 сотрудник' },
-          { id: 'kedo', name: 'КЭДО', price: 1000, emp: true, need: 'Нужен хотя бы 1 сотрудник' }
+          { id: 'sepnds', name: 'Раздельный учёт НДС', pct: 0.15 },
+          { id: 'ved', name: 'ВЭД (импорт/экспорт)', pct: 0.15 },
+          { id: 'leasing', name: 'Лизинг и факторинг', title: 'Лизинговые и факторинговые операции', pct: 0.1 },
+          { id: 'payroll', name: 'Особый учёт оплаты труда', pct: 0.15 },
+          { id: 'rev100', name: 'Выручка от 100 млн ₽/год', pct: 0.2 },
+          { id: 'kassa', name: 'Онлайн-касса', flat: 1000 },
+          { id: 'patent', name: 'Патент', flat: 1000 },
+          { id: 'osnotax', name: 'Доп. налог для ОСНО', title: 'Дополнительный налог для ОСНО (кроме НДС и налога на прибыль)', flat: 1000, only: ['osno'], need: 'Только для ОСНО' },
+          { id: 'agent', name: 'Агентский договор', flat: 1000 },
+          { id: 'acq', name: 'Эквайринг / магазин', title: 'Аккаунт эквайринга или магазин внутри аккаунта', flat: 1000 },
+          { id: 'nds', name: 'Плачу НДС на УСН', only: ['usn6', 'usn15'], need: 'Только для УСН' },
+          { id: 'stat', name: 'Статистическая отчётность' },
+          { id: 'mil', name: 'Воинский учёт', emp: true, need: 'Нужен хотя бы 1 сотрудник' },
+          { id: 'kedo', name: 'КЭДО', emp: true, need: 'Нужен хотя бы 1 сотрудник' }
         ],
+        // скидки за период оплаты: появятся позже (0 = без скидки)
         periods: [
           { id: 'month', name: 'Помесячно', d: 0 },
-          { id: 'quarter', name: 'За квартал', d: 0.05 },
-          { id: 'year', name: 'За год', d: 0.1 }
+          { id: 'quarter', name: 'За квартал', d: 0 },
+          { id: 'year', name: 'За год', d: 0 }
         ],
 
-        get availableTaxes() { return this.taxes.filter(t => t[this.owner] !== null); },
-        setOwner(id) { this.owner = id; if (this.taxes.find(t => t.id === this.tax)[id] === null) this.tax = 'usn6'; },
+        get availableTaxes() { return this.taxes; },
+        setOwner(id) { this.owner = id; },
+        setMode(m) { this.mode = m; this.docs = Math.min(this.docs, this.steps.length - 1); },
+        get steps() { return this.mode === 'restore' ? RSTEPS : TIERS; },
+        tickStyle(i) {
+          const n = this.steps.length - 1;
+          if (i === 0) return 'left:0';
+          if (i === n) return 'right:0';
+          return 'left:' + (i / n * 100) + '%;transform:translateX(-50%)';
+        },
         step(k, n) {
           const s = this.steppers.find(x => x.key === k);
           this[k] = Math.min(s.max, Math.max(s.min, this[k] + n));
           if (k === 'emp' && this[k] === 0) { this.flags.mil = false; this.flags.kedo = false; }
         },
-        flagOff(f) {
-          return (f.only && !f.only.includes(this.tax)) || (f.emp && this.emp === 0);
+        flagOff(f) { return (f.only && !f.only.includes(this.tax)) || (f.emp && this.emp === 0); },
+        flagHint(f) { return f.pct ? '+' + Math.round(f.pct * 100) + '%' : f.flat ? '+' + this.fmt(f.flat) + ' ₽' : 'по запросу'; },
+
+        get unit() {
+          if (this.mode === 'restore') return { key: 'once', head: 'Стоимость разово', short: '₽', mult: 1 };
+          if (this.mode === 'zero' || this.docs === 0) return { key: 'q', head: 'Стоимость в квартал', short: '₽/кв.', mult: 4 };
+          return { key: 'm', head: 'Стоимость в месяц', short: '₽/мес', mult: 12 };
         },
-        get lines() {
-          const t = this.taxes.find(x => x.id === this.tax);
-          const ownerName = this.owner === 'ip' ? 'ИП' : 'ООО';
-          if (this.zero) return [{ label: 'Нулевая отчётность · ' + ownerName, sum: this.zeroPrice[this.owner] }];
-          const out = [{ label: 'Бухгалтерия ' + ownerName + ' · ' + t.name, sum: t[this.owner] }];
-          if (this.emp > 0) out.push({ label: 'Кадры и зарплата · ' + this.emp + ' сотр.', sum: 2500 + 700 * this.emp });
-          if (this.mp > 0) out.push({ label: 'Маркетплейсы · ' + this.mp + ' шт.', sum: 2000 * this.mp });
-          if (this.acc > 1) out.push({ label: 'Дополнительные счета · ' + (this.acc - 1) + ' шт.', sum: 500 * (this.acc - 1) });
-          if (this.docsTiers[this.docs].price) out.push({ label: 'Первичные документы · ' + this.docsTiers[this.docs].label, sum: this.docsTiers[this.docs].price });
-          this.flagList.forEach(f => { if (this.flags[f.id] && !this.flagOff(f)) out.push({ label: f.name, sum: f.price }); });
-          return out;
+        get res() {
+          const lines = []; let partial = false;
+          const add = (label, sum, note) => { lines.push({ label, sum, note: note || 'по запросу' }); if (sum === null) partial = true; };
+          const tname = this.taxes.find(x => x.id === this.tax).name;
+          let base = null;
+          if (this.mode === 'zero') {
+            base = ZERO[this.tax];
+            add('Нулевая отчётность · ' + tname, base);
+            return { lines, partial };
+          }
+          const st = this.steps[this.docs];
+          if (this.mode === 'restore') {
+            base = RESTORE[this.docs];
+            add('Восстановление учёта · ' + st.tick + ' док.', base);
+            if (st.open) add('Свыше ' + st.openFrom + ' док.: +' + st.open + ' ₽ за каждый', null, 'или по договорённости');
+            return { lines, partial };
+          }
+          base = PRICE[this.tax] ? PRICE[this.tax][this.docs] : null;
+          add('Ведение учёта · ' + tname + ' · ' + st.tick, base);
+          if (st.open) add('Свыше ' + st.openFrom + ' док.: +' + st.open + ' ₽ за каждый', null, 'или по договорённости');
+          if (this.emp > 0) add('Кадры и зарплата · ' + this.emp + ' сотр.', null);
+          if (this.mp > 0) add('Маркетплейсы · ' + this.mp + ' шт.', null);
+          if (this.acc > 1) add('Доп. расчётные счета · ' + (this.acc - 1) + ' шт.', 1000 * (this.acc - 1));
+          this.flagList.forEach(f => {
+            if (!this.flags[f.id] || this.flagOff(f)) return;
+            if (f.pct) add(f.title || f.name, base === null ? null : Math.round(base * f.pct), base === null ? null : undefined);
+            else if (f.flat) add(f.title || f.name, f.flat);
+            else add(f.title || f.name, null);
+          });
+          return { lines, partial };
         },
-        get monthly() { return this.lines.reduce((a, l) => a + l.sum, 0); },
-        get discountRate() { return this.periods.find(p => p.id === this.period).d; },
+        get lines() { return this.res.lines; },
+        get partial() { return this.res.partial; },
+        get monthly() { return this.lines.reduce((a, l) => a + (l.sum || 0), 0); },
+        get discountRate() { return (this.mode === 'keep' && this.unit.key === 'm') ? this.periods.find(p => p.id === this.period).d : 0; },
         get total() { return Math.round(this.monthly * (1 - this.discountRate)); },
-        get yearSaving() { return (this.monthly - this.total) * 12; },
+        get yearSaving() { return (this.monthly - this.total) * this.unit.mult; },
+        get totalText() {
+          if (this.total === 0 || this.lines[0].sum === null) return 'по запросу';
+          return (this.partial ? 'от ' : '') + this.fmt(this.total) + ' ₽';
+        },
+        get cta() {
+          if (this.total === 0 || this.lines[0].sum === null) return 'Уточнить стоимость';
+          return (this.mode === 'restore' ? 'Заказать за ' : 'Подключиться за ') + (this.partial ? 'от ' : '') + this.fmt(this.total) + ' ' + this.unit.short;
+        },
         fmt(n) { return Number(n).toLocaleString('ru-RU'); }
       }));
     });
