@@ -745,18 +745,35 @@
             <button type="button" id="price-tab-accounting"
               class="price-tab rounded-xl border border-brand bg-brand px-5 py-3 text-sm font-bold text-on-brand transition"
               role="tab" aria-selected="true" aria-controls="price-panel-accounting"
-              data-price-tab="accounting">Бухгалтерское сопровождение</button>
+              data-price-tab="accounting">Бухгалтерское сопровождение<span data-tab-count class="ml-1.5 hidden rounded-full border border-current px-1.5 text-[11px] leading-[18px]"></span></button>
             <button type="button" id="price-tab-zero"
               class="price-tab rounded-xl border border-line bg-canvas px-5 py-3 text-sm font-bold text-ink/70 transition hover:border-brand hover:text-brand"
               role="tab" aria-selected="false" aria-controls="price-panel-zero" data-price-tab="zero"
-              tabindex="-1">Нулевая отчётность</button>
-            <button type="button" id="price-tab-consulting"
+              tabindex="-1">Нулевая отчётность<span data-tab-count class="ml-1.5 hidden rounded-full border border-current px-1.5 text-[11px] leading-[18px]"></span></button>
+            <button type="button" id="price-tab-staff"
               class="price-tab rounded-xl border border-line bg-canvas px-5 py-3 text-sm font-bold text-ink/70 transition hover:border-brand hover:text-brand"
               role="tab" aria-selected="false" aria-controls="price-panel-consulting" data-price-tab="consulting"
-              tabindex="-1">Консультации и кадры</button>
+              tabindex="-1">Кадры<span data-tab-count class="ml-1.5 hidden rounded-full border border-current px-1.5 text-[11px] leading-[18px]"></span></button>
+            <button type="button" id="price-tab-payroll"
+              class="price-tab rounded-xl border border-line bg-canvas px-5 py-3 text-sm font-bold text-ink/70 transition hover:border-brand hover:text-brand"
+              role="tab" aria-selected="false" aria-controls="price-panel-payroll" data-price-tab="payroll"
+              tabindex="-1">Заработная плата<span data-tab-count class="ml-1.5 hidden rounded-full border border-current px-1.5 text-[11px] leading-[18px]"></span></button>
+            <button type="button" id="price-tab-registration"
+              class="price-tab rounded-xl border border-line bg-canvas px-5 py-3 text-sm font-bold text-ink/70 transition hover:border-brand hover:text-brand"
+              role="tab" aria-selected="false" aria-controls="price-panel-registration" data-price-tab="registration"
+              tabindex="-1">Регистрация и ликвидация<span data-tab-count class="ml-1.5 hidden rounded-full border border-current px-1.5 text-[11px] leading-[18px]"></span></button>
+            <button type="button" id="price-tab-other"
+              class="price-tab rounded-xl border border-line bg-canvas px-5 py-3 text-sm font-bold text-ink/70 transition hover:border-brand hover:text-brand"
+              role="tab" aria-selected="false" aria-controls="price-panel-other" data-price-tab="other"
+              tabindex="-1">Прочие бухгалтерские услуги<span data-tab-count class="ml-1.5 hidden rounded-full border border-current px-1.5 text-[11px] leading-[18px]"></span></button>
+            <button type="button" id="price-tab-consalting"
+              class="price-tab rounded-xl border border-line bg-canvas px-5 py-3 text-sm font-bold text-ink/70 transition hover:border-brand hover:text-brand"
+              role="tab" aria-selected="false" aria-controls="price-panel-consalting" data-price-tab="consalting"
+              tabindex="-1">Консультации<span data-tab-count class="ml-1.5 hidden rounded-full border border-current px-1.5 text-[11px] leading-[18px]"></span></button>
           </div>
 
           <div class="mt-6 overflow-hidden rounded-3xl border border-line bg-canvas shadow-xl shadow-brand/5">
+            
             <div id="price-panel-accounting" class="price-panel" role="tabpanel" aria-labelledby="price-tab-accounting"
               data-price-panel="accounting">
               <div class="border-b border-line p-6 sm:p-8">
@@ -773,23 +790,33 @@
                 <table class="w-full min-w-[620px] text-left text-sm">
                   <thead class="bg-surface text-xs uppercase tracking-wider text-ink/55">
                     <tr>
+                      <th class="w-14 px-4 py-4"><span class="sr-only">Выбрать</span></th>
                       <th class="px-6 py-4 font-bold">Услуга</th>
                       <th class="px-6 py-4 font-bold">Что входит</th>
                       <th class="px-6 py-4 text-right font-bold">Стоимость</th>
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-line">
-                    <tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="accounting-0" data-panel="accounting" data-name="Бухгалтерский и налоговый учёт" data-unit="Ведение учёта операций и первичных документов" data-bill="month" data-price="" data-note="по запросу" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Бухгалтерский и налоговый учёт" /></td>
+
                       <td class="px-6 py-5 font-semibold">Бухгалтерский и налоговый учёт</td>
                       <td class="px-6 py-5 text-ink/65">Ведение учёта операций и первичных документов</td>
                       <td class="px-6 py-5 text-right font-extrabold text-brand">По запросу</td>
                     </tr>
-                    <tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="accounting-1" data-panel="accounting" data-name="Подготовка и сдача отчётности" data-unit="Подготовка обязательной отчётности в рамках сопровождения" data-bill="month" data-price="" data-note="по запросу" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Подготовка и сдача отчётности" /></td>
+
                       <td class="px-6 py-5 font-semibold">Подготовка и сдача отчётности</td>
                       <td class="px-6 py-5 text-ink/65">Подготовка обязательной отчётности в рамках сопровождения</td>
                       <td class="px-6 py-5 text-right font-extrabold text-brand">По запросу</td>
                     </tr>
-                    <tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="accounting-2" data-panel="accounting" data-name="Комплексное сопровождение ИП / ООО" data-unit="Состав и объём работ согласуются индивидуально" data-bill="month" data-price="" data-note="по запросу" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Комплексное сопровождение ИП / ООО" /></td>
+
                       <td class="px-6 py-5 font-semibold">Комплексное сопровождение ИП / ООО</td>
                       <td class="px-6 py-5 text-ink/65">Состав и объём работ согласуются индивидуально</td>
                       <td class="px-6 py-5 text-right font-extrabold text-brand">По запросу</td>
@@ -815,23 +842,33 @@
                 <table class="w-full min-w-[560px] text-left text-sm">
                   <thead class="bg-surface text-xs uppercase tracking-wider text-ink/55">
                     <tr>
+                      <th class="w-14 px-4 py-4"><span class="sr-only">Выбрать</span></th>
                       <th class="px-6 py-4 font-bold">Система налогообложения</th>
                       <th class="px-6 py-4 font-bold">Услуга</th>
                       <th class="px-6 py-4 text-right font-bold">Стоимость</th>
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-line">
-                    <tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="zero-0" data-panel="zero" data-name="Нулевая отчётность — УСН 6%" data-unit="Подготовка и отправка нулевой отчётности" data-bill="quarter" data-price="2000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Нулевая отчётность — УСН 6%" /></td>
+
                       <td class="px-6 py-5 font-semibold">УСН 6%</td>
                       <td class="px-6 py-5 text-ink/65">Подготовка и отправка нулевой отчётности</td>
                       <td class="px-6 py-5 text-right font-extrabold text-brand">2 000 ₽</td>
                     </tr>
-                    <tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="zero-1" data-panel="zero" data-name="Нулевая отчётность — УСН 15%" data-unit="Подготовка и отправка нулевой отчётности" data-bill="quarter" data-price="2500" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Нулевая отчётность — УСН 15%" /></td>
+
                       <td class="px-6 py-5 font-semibold">УСН 15%</td>
                       <td class="px-6 py-5 text-ink/65">Подготовка и отправка нулевой отчётности</td>
                       <td class="px-6 py-5 text-right font-extrabold text-brand">2 500 ₽</td>
                     </tr>
-                    <tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="zero-2" data-panel="zero" data-name="Нулевая отчётность — ОСНО" data-unit="Подготовка и отправка нулевой отчётности" data-bill="quarter" data-price="3000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Нулевая отчётность — ОСНО" /></td>
+
                       <td class="px-6 py-5 font-semibold">ОСНО</td>
                       <td class="px-6 py-5 text-ink/65">Подготовка и отправка нулевой отчётности</td>
                       <td class="px-6 py-5 text-right font-extrabold text-brand">3 000 ₽</td>
@@ -842,11 +879,11 @@
             </div>
 
             <div id="price-panel-consulting" class="price-panel hidden" role="tabpanel"
-              aria-labelledby="price-tab-consulting" data-price-panel="consulting" hidden>
+              aria-labelledby="price-tab-staff" data-price-panel="consulting" hidden>
               <div class="border-b border-line p-6 sm:p-8">
                 <div class="flex flex-wrap items-center justify-between gap-3">
                   <div>
-                    <h3 class="text-xl font-extrabold sm:text-2xl">Консультации и кадровые услуги</h3>
+                    <h3 class="text-xl font-extrabold sm:text-2xl">Кадровые услуги</h3>
                     <p class="mt-2 text-sm text-ink/60">Разовые консультации и расчёт зарплаты, а также ежемесячное
                       кадровое сопровождение.</p>
                   </div>
@@ -857,29 +894,656 @@
                 <table class="w-full min-w-[600px] text-left text-sm">
                   <thead class="bg-surface text-xs uppercase tracking-wider text-ink/55">
                     <tr>
+                      <th class="w-14 px-4 py-4"><span class="sr-only">Выбрать</span></th>
                       <th class="px-6 py-4 font-bold">Услуга</th>
                       <th class="px-6 py-4 font-bold">Единица расчёта</th>
                       <th class="px-6 py-4 text-right font-bold">Стоимость</th>
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-line">
-                    <tr>
-                      <td class="px-6 py-5 font-semibold">Налоговая консультация</td>
-                      <td class="px-6 py-5 text-ink/65">60 минут</td>
-                      <td class="px-6 py-5 text-right font-extrabold text-brand">2 000 ₽</td>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-0" data-panel="consulting" data-name="Комплексный кадровый учёт (до 3 человек)" data-unit="до 3 человек" data-bill="month" data-price="1000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Комплексный кадровый учёт (до 3 человек)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Комплексный кадровый учёт</td>
+                      <td class="px-6 py-5 text-ink/65">до 3 человек</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">1 000 ₽/мес.</td>
                     </tr>
-                    <tr>
-                      <td class="px-6 py-5 font-semibold">Расчёт зарплаты</td>
-                      <td class="px-6 py-5 text-ink/65">1 сотрудник / расчётный период</td>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-1" data-panel="consulting" data-name="Комплексный кадровый учёт (более 3 человек)" data-unit="сотр." data-bill="month" data-price="1000" data-note="" data-from="" data-extra="500" data-extra-from="3" data-qty="1" data-qty-min="4">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Комплексный кадровый учёт (более 3 человек)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Комплексный кадровый учёт</td>
+                      <td class="px-6 py-5 text-ink/65">более 3 человек</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">1 000 + 500 ₽ за каждого доп. сотрудника</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-2" data-panel="consulting" data-name="Приказы руководителя по кадрам" data-unit="шт." data-bill="once" data-price="100" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Приказы руководителя по кадрам" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Приказы руководителя по кадрам</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">100 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-3" data-panel="consulting" data-name="Типовые трудовые договоры" data-unit="шт." data-bill="once" data-price="1000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Типовые трудовые договоры" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Типовые трудовые договоры</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
                       <td class="px-6 py-5 text-right font-extrabold text-brand">1 000 ₽</td>
                     </tr>
-                    <tr>
-                      <td class="px-6 py-5 font-semibold">Зарплата и кадровое сопровождение</td>
-                      <td class="px-6 py-5 text-ink/65">До 5 сотрудников / месяц</td>
-                      <td class="px-6 py-5 text-right font-extrabold text-brand">6 500 ₽/мес.</td>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-4" data-panel="consulting" data-name="Согласие на использование персональных данных работников" data-unit="шт." data-bill="once" data-price="300" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Согласие на использование персональных данных работников" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Согласие на использование персональных данных работников</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">300 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-5" data-panel="consulting" data-name="Справка 2-НДФЛ" data-unit="шт." data-bill="once" data-price="150" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Справка 2-НДФЛ" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Справка 2-НДФЛ</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">150 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-6" data-panel="consulting" data-name="Справка по форме № 182н" data-unit="шт." data-bill="once" data-price="200" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Справка по форме № 182н" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Справка по форме № 182н</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">200 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-7" data-panel="consulting" data-name="Штатное расписание + приказ" data-unit="шт." data-bill="once" data-price="2000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Штатное расписание + приказ" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Штатное расписание + приказ</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">2 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-8" data-panel="consulting" data-name="Заявления от имени сотрудника" data-unit="шт." data-bill="once" data-price="200" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Заявления от имени сотрудника" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Заявления от имени сотрудника</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">200 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-9" data-panel="consulting" data-name="Личная карточка Т-2" data-unit="шт." data-bill="once" data-price="500" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Личная карточка Т-2" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Личная карточка Т-2</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">500 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-10" data-panel="consulting" data-name="Табель учёта рабочего времени" data-unit="шт." data-bill="once" data-price="1000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Табель учёта рабочего времени" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Табель учёта рабочего времени</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">1 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-11" data-panel="consulting" data-name="График отпусков + приказ" data-unit="шт." data-bill="once" data-price="2000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: График отпусков + приказ" /></td>
+
+                      <td class="px-6 py-5 font-semibold">График отпусков + приказ</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">2 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-12" data-panel="consulting" data-name="Должностная инструкция" data-unit="шт." data-bill="once" data-price="3000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Должностная инструкция" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Должностная инструкция</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">3 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-13" data-panel="consulting" data-name="Локальный нормативный акт" data-unit="шт." data-bill="once" data-price="3000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Локальный нормативный акт" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Локальный нормативный акт</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">3 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consulting-14" data-panel="consulting" data-name="Постановка (снятие) миграционного учёта иностранного работника" data-unit="шт." data-bill="once" data-price="3000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Постановка (снятие) миграционного учёта иностранного работника" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Постановка (снятие) миграционного учёта иностранного работника</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">3 000 ₽</td>
                     </tr>
                   </tbody>
                 </table>
+              </div>
+            </div>
+            
+            <div id="price-panel-payroll" class="price-panel hidden" role="tabpanel" aria-labelledby="price-tab-payroll"
+              data-price-panel="payroll" hidden>
+              <div class="border-b border-line p-6 sm:p-8">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <h3 class="text-xl font-extrabold sm:text-2xl">Заработная плата</h3>
+                    <p class="mt-2 text-sm text-ink/60">Расчёт и учёт оплаты труда, отпускных и больничных, а также отчётность по сотрудникам.</p>
+                  </div>
+                  <span class="badge border-line bg-surface text-ink/60">За расчётный период</span>
+                </div>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full min-w-[620px] text-left text-sm">
+                  <thead class="bg-surface text-xs uppercase tracking-wider text-ink/55">
+                    <tr>
+                      <th class="w-14 px-4 py-4"><span class="sr-only">Выбрать</span></th>
+                      <th class="px-6 py-4 font-bold">Услуга</th>
+                      <th class="px-6 py-4 font-bold">Единица расчёта</th>
+                      <th class="px-6 py-4 text-right font-bold">Стоимость</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-line">
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="payroll-0" data-panel="payroll" data-name="Расчёт зарплаты (до 3 сотрудников)" data-unit="до 3 сотрудников" data-bill="once" data-price="0" data-note="включено в обслуживание" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Расчёт зарплаты (до 3 сотрудников)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Расчёт зарплаты</td>
+                      <td class="px-6 py-5 text-ink/65">до 3 сотрудников</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">включено в ежемесячное обслуживание</td>
+                    </tr>
+                   <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="payroll-1" data-panel="payroll" data-name="Расчёт зарплаты (более 3 сотрудников или договор ГПХ)" data-unit="сотр." data-bill="month" data-price="1000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Расчёт зарплаты (более 3 сотрудников или договор ГПХ)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Расчёт зарплаты</td>
+                      <td class="px-6 py-5 text-ink/65">более 3 сотрудников или договор ГПХ</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">1 000 ₽ за сотрудника</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="payroll-2" data-panel="payroll" data-name="Расчёт командировки, отпуска, больничного, компенсации при увольнении" data-unit="за расчёт" data-bill="once" data-price="1000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Расчёт командировки, отпуска, больничного, компенсации при увольнении" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Расчёт командировки, отпуска, больничного, компенсации при увольнении</td>
+                      <td class="px-6 py-5 text-ink/65">за расчёт</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">1 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="payroll-3" data-panel="payroll" data-name="Подготовка платёжных ведомостей" data-unit="Единица расчёта" data-bill="once" data-price="0" data-note="включено в обслуживание" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Подготовка платёжных ведомостей" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Подготовка платёжных ведомостей</td>
+                      <td class="px-6 py-5 text-ink/65">Единица расчёта</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">включено в ежемесячное обслуживание</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="price-panel-registration" class="price-panel hidden" role="tabpanel" aria-labelledby="price-tab-registration"
+              data-price-panel="registration" hidden>
+              <div class="border-b border-line p-6 sm:p-8">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <h3 class="text-xl font-extrabold sm:text-2xl">Регистрация и ликвидация</h3>
+                    <p class="mt-2 text-sm text-ink/60">Открытие и закрытие бизнеса под ключ. Государственная пошлина оплачивается отдельно. Цены демонстрационные.</p>
+                  </div>
+                  <span class="badge border-line bg-surface text-ink/60">Разово</span>
+                </div>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full min-w-[620px] text-left text-sm">
+                  <thead class="bg-surface text-xs uppercase tracking-wider text-ink/55">
+                    <tr>
+                      <th class="w-14 px-4 py-4"><span class="sr-only">Выбрать</span></th>
+                      <th class="px-6 py-4 font-bold">Услуга</th>
+                      <th class="px-6 py-4 font-bold">Что входит</th>
+                      <th class="px-6 py-4 text-right font-bold">Стоимость</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-line">
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-0" data-panel="registration" data-name="Регистрация ООО (1 учредитель)" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="15000" data-note="от 15 000 ₽" data-from="1" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Регистрация ООО (1 учредитель)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Регистрация ООО (1 учредитель)</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">от 15 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-1" data-panel="registration" data-name="Регистрация ООО (2 и более учредителей, в т. ч. с юрлицом)" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="25000" data-note="от 25 000 ₽" data-from="1" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Регистрация ООО (2 и более учредителей, в т. ч. с юрлицом)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Регистрация ООО (2 и более учредителей, в т. ч. с юрлицом)</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">от 25 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-2" data-panel="registration" data-name="Регистрация ИП" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="5000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Регистрация ИП" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Регистрация ИП</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">5 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-3" data-panel="registration" data-name="Постановка ИП на учёт в ФСС" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="5000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Постановка ИП на учёт в ФСС" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Постановка ИП на учёт в ФСС</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">5 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-4" data-panel="registration" data-name="Регистрация ИП и ООО при договоре от 6 месяцев" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="" data-note="по договору" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Регистрация ИП и ООО при договоре от 6 месяцев" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Регистрация ИП и ООО при договоре от 6 месяцев</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">по договору</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-5" data-panel="registration" data-name="Альтернативная ликвидация (смена участников, руководителя и главбуха)" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="50000" data-note="от 50 000 ₽" data-from="1" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Альтернативная ликвидация (смена участников, руководителя и главбуха)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Альтернативная ликвидация (смена участников, руководителя и главбуха)</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">от 50 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-6" data-panel="registration" data-name="Официальная ликвидация" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="50000" data-note="от 50 000 ₽" data-from="1" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Официальная ликвидация" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Официальная ликвидация</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">от 50 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-7" data-panel="registration" data-name="Прекращение деятельности ИП" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="5000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Прекращение деятельности ИП" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Прекращение деятельности ИП</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">5 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-8" data-panel="registration" data-name="Смена руководителя" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="6000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Смена руководителя" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Смена руководителя</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">6 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-9" data-panel="registration" data-name="Смены участников" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="4000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Смены участников" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Смены участников</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">4 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-10" data-panel="registration" data-name="Смена учредителей и генерального директора" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="20000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Смена учредителей и генерального директора" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Смена учредителей и генерального директора</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">20 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-11" data-panel="registration" data-name="Смена юр. адреса (без стоимости адреса)" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="6000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Смена юр. адреса (без стоимости адреса)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Смена юр. адреса (без стоимости адреса)</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">6 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-12" data-panel="registration" data-name="Смена названия" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="6000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Смена названия" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Смена названия</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">6 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-13" data-panel="registration" data-name="Регистрация изменений в ЕГРЮЛ" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="6000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Регистрация изменений в ЕГРЮЛ" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Регистрация изменений в ЕГРЮЛ</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">6 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-14" data-panel="registration" data-name="Увеличение или уменьшение уставного капитала" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="15000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Увеличение или уменьшение уставного капитала" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Увеличение или уменьшение уставного капитала</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">15 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="registration-15" data-panel="registration" data-name="Перерегистрация" data-unit="Подготовка и получение пакета документов" data-bill="once" data-price="6000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Перерегистрация" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Перерегистрация</td>
+                      <td class="px-6 py-5 text-ink/65">Подготовка и получение пакета документов</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">6 000 ₽</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="price-panel-other" class="price-panel hidden" role="tabpanel" aria-labelledby="price-tab-other"
+              data-price-panel="other" hidden>
+              <div class="border-b border-line p-6 sm:p-8">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <h3 class="text-xl font-extrabold sm:text-2xl">Прочие бухгалтерские услуги</h3>
+                    <p class="mt-2 text-sm text-ink/60">Разовые работы, не входящие в ежемесячное сопровождение. Цены демонстрационные.</p>
+                  </div>
+                  <span class="badge border-line bg-surface text-ink/60">По задаче</span>
+                </div>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full min-w-[620px] text-left text-sm">
+                  <thead class="bg-surface text-xs uppercase tracking-wider text-ink/55">
+                    <tr>
+                      <th class="w-14 px-4 py-4"><span class="sr-only">Выбрать</span></th>
+                      <th class="px-6 py-4 font-bold">Услуга</th>
+                      <th class="px-6 py-4 font-bold">Единица расчёта</th>
+                      <th class="px-6 py-4 text-right font-bold">Стоимость</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-line">
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-0" data-panel="other" data-name="Доступ к 1С (облако)" data-unit="1 место" data-bill="month" data-price="1000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Доступ к 1С (облако)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Доступ к 1С (облако)</td>
+                      <td class="px-6 py-5 text-ink/65">1 место</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">1 000 ₽/мес.</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-1" data-panel="other" data-name="Доступ в личный кабинет" data-unit="1 место" data-bill="once" data-price="0" data-note="бесплатно" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Доступ в личный кабинет" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Доступ в личный кабинет</td>
+                      <td class="px-6 py-5 text-ink/65">1 место</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">бесплатно</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-2" data-panel="other" data-name="Разработка типовой учётной политики" data-unit="шт." data-bill="once" data-price="5000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Разработка типовой учётной политики" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Разработка типовой учётной политики</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">5 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-3" data-panel="other" data-name="Разработка индивидуальной учётной политики" data-unit="шт." data-bill="once" data-price="15000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Разработка индивидуальной учётной политики" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Разработка индивидуальной учётной политики</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">15 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-4" data-panel="other" data-name="Постановка учёта" data-unit="шт." data-bill="once" data-price="15000" data-note="от 15 000 ₽" data-from="1" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Постановка учёта" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Постановка учёта</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">от 15 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-5" data-panel="other" data-name="Постановка учёта (при годовом договоре)" data-unit="шт." data-bill="once" data-price="0" data-note="бесплатно" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Постановка учёта (при годовом договоре)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Постановка учёта (при годовом договоре)</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">бесплатно</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-6" data-panel="other" data-name="Оформление первичных документов (до 10 строк)" data-unit="комплект" data-bill="once" data-price="150" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Оформление первичных документов (до 10 строк)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Оформление первичных документов (до 10 строк)</td>
+                      <td class="px-6 py-5 text-ink/65">комплект</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">150 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-7" data-panel="other" data-name="Оформление первичных документов (свыше 10 строк или отраслевые)" data-unit="комплект" data-bill="once" data-price="150" data-note="от 150 до 500 ₽" data-from="1" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Оформление первичных документов (свыше 10 строк или отраслевые)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Оформление первичных документов (свыше 10 строк или отраслевые)</td>
+                      <td class="px-6 py-5 text-ink/65">комплект</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">от 150 до 500 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-8" data-panel="other" data-name="Создание платёжных поручений в «Банк-клиент»" data-unit="шт." data-bill="once" data-price="100" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Создание платёжных поручений в «Банк-клиент»" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Создание платёжных поручений в «Банк-клиент»</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">100 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-9" data-panel="other" data-name="Валютный контроль" data-unit="документ" data-bill="once" data-price="700" data-note="от 700 до 3 000 ₽" data-from="1" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Валютный контроль" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Валютный контроль</td>
+                      <td class="px-6 py-5 text-ink/65">документ</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">от 700 до 3 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-10" data-panel="other" data-name="Открытие расчётного счёта" data-unit="шт." data-bill="once" data-price="2000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Открытие расчётного счёта" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Открытие расчётного счёта</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">2 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-11" data-panel="other" data-name="Корректировка налоговой декларации" data-unit="шт." data-bill="once" data-price="3000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Корректировка налоговой декларации" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Корректировка налоговой декларации</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">3 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-12" data-panel="other" data-name="Подготовка статистической отчётности" data-unit="шт." data-bill="once" data-price="1500" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Подготовка статистической отчётности" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Подготовка статистической отчётности</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">1 500 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-13" data-panel="other" data-name="Подготовка статистической отчётности (без оборотов)" data-unit="шт." data-bill="once" data-price="500" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Подготовка статистической отчётности (без оборотов)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Подготовка статистической отчётности (без оборотов)</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">500 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-14" data-panel="other" data-name="Получение выписки ЕГРЮЛ/ЕГРИП (электронная)" data-unit="шт." data-bill="once" data-price="500" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Получение выписки ЕГРЮЛ/ЕГРИП (электронная)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Получение выписки ЕГРЮЛ/ЕГРИП (электронная)</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">500 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-15" data-panel="other" data-name="Получение выписки ЕГРЮЛ/ЕГРИП (бумажная)" data-unit="шт." data-bill="once" data-price="2000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Получение выписки ЕГРЮЛ/ЕГРИП (бумажная)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Получение выписки ЕГРЮЛ/ЕГРИП (бумажная)</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">2 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-16" data-panel="other" data-name="Получение справки об отсутствии задолженности из ФНС или ПФР (электронная)" data-unit="шт." data-bill="once" data-price="500" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Получение справки об отсутствии задолженности из ФНС или ПФР (электронная)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Получение справки об отсутствии задолженности из ФНС или ПФР (электронная)</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">500 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-17" data-panel="other" data-name="Получение справки об отсутствии задолженности из ФНС или ПФР (бумажная)" data-unit="шт." data-bill="once" data-price="2000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Получение справки об отсутствии задолженности из ФНС или ПФР (бумажная)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Получение справки об отсутствии задолженности из ФНС или ПФР (бумажная)</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">2 000 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-18" data-panel="other" data-name="Сдача курьером" data-unit="одна инстанция" data-bill="once" data-price="800" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Сдача курьером" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Сдача курьером </td>
+                      <td class="px-6 py-5 text-ink/65">одна инстанция</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">800 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-19" data-panel="other" data-name="Подключение к «1С-Отчётность» (ФНС)" data-unit="1 место · в год" data-bill="once" data-price="3600" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Подключение к «1С-Отчётность» (ФНС)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Подключение к «1С-Отчётность» (ФНС)</td>
+                      <td class="px-6 py-5 text-ink/65">1 место</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">3 600 ₽/год</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="other-20" data-panel="other" data-name="Подключение к «1С-Отчётность» (ФНС, ПФР, ФСС, Росстат)" data-unit="шт. · в год" data-bill="once" data-price="6900" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="1" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Подключение к «1С-Отчётность» (ФНС, ПФР, ФСС, Росстат)" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Подключение к «1С-Отчётность» (ФНС, ПФР, ФСС, Росстат)</td>
+                      <td class="px-6 py-5 text-ink/65">шт.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">6 900 ₽/год</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="price-panel-consalting" class="price-panel hidden" role="tabpanel" aria-labelledby="price-tab-consalting"
+              data-price-panel="consalting" hidden>
+              <div class="border-b border-line p-6 sm:p-8">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <h3 class="text-xl font-extrabold sm:text-2xl">Прочие бухгалтерские услуги</h3>
+                    <p class="mt-2 text-sm text-ink/60">Разовые работы, не входящие в ежемесячное сопровождение. Цены демонстрационные.</p>
+                  </div>
+                  <span class="badge border-line bg-surface text-ink/60">По задаче</span>
+                </div>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full min-w-[620px] text-left text-sm">
+                  <thead class="bg-surface text-xs uppercase tracking-wider text-ink/55">
+                    <tr>
+                      <th class="w-14 px-4 py-4"><span class="sr-only">Выбрать</span></th>
+                      <th class="px-6 py-4 font-bold">Услуга</th>
+                      <th class="px-6 py-4 font-bold">Что входит</th>
+                      <th class="px-6 py-4 text-right font-bold">Стоимость</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-line">
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consalting-0" data-panel="consalting" data-name="Онлайн или в офисе (Калининград). Разово." data-unit="60 минут. Только полезная информация. Чек-лист с рекомендациями в подарок." data-bill="once" data-price="2000" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Онлайн или в офисе (Калининград). Разово." /></td>
+
+                      <td class="px-6 py-5 font-semibold">Онлайн или в офисе (Калининград). Разово.</td>
+                      <td class="px-6 py-5 text-ink/65">60 минут. Только полезная информация. Чек-лист с рекомендациями в подарок.</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">2 000 ₽ </td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consalting-1" data-panel="consalting" data-name="Онлайн или в офисе (Калининград). При заключении договора на обслуживание." data-unit="60 минут" data-bill="once" data-price="0" data-note="бесплатно" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Онлайн или в офисе (Калининград). При заключении договора на обслуживание." /></td>
+
+                      <td class="px-6 py-5 font-semibold">Онлайн или в офисе (Калининград). При заключении договора на обслуживание.</td>
+                      <td class="px-6 py-5 text-ink/65">60 минут</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">бесплатно</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consalting-2" data-panel="consalting" data-name="Письменные консультации" data-unit="60 минут" data-bill="once" data-price="2500" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Письменные консультации" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Письменные консультации</td>
+                      <td class="px-6 py-5 text-ink/65">60 минут</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">2 500 ₽</td>
+                    </tr>
+                    <tr class="cursor-pointer transition hover:bg-surface/60" data-svc="consalting-3" data-panel="consalting" data-name="Консультации по налогам с ФОТ" data-unit="60 минут" data-bill="once" data-price="2500" data-note="" data-from="" data-extra="" data-extra-from="" data-qty="" data-qty-min="1">
+
+                      <td class="w-14 px-4 py-5"><input type="checkbox" class="checkbox checkbox-primary checkbox-sm" data-svc-check aria-label="Добавить в набор: Консультации по налогам с ФОТ" /></td>
+
+                      <td class="px-6 py-5 font-semibold">Консультации по налогам с ФОТ</td>
+                      <td class="px-6 py-5 text-ink/65">60 минут</td>
+                      <td class="px-6 py-5 text-right font-extrabold text-brand">2 500 ₽</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div id="svc-bar" class="sticky bottom-4 z-30 mt-4" hidden>
+            <div class="mx-auto flex max-w-xl items-center justify-between gap-3 rounded-2xl border border-brand/40 bg-canvas/95 px-4 py-3 shadow-xl shadow-brand/10 backdrop-blur">
+              <p class="text-sm font-semibold">Выбрано: <span id="svc-bar-count" class="font-extrabold text-brand">0</span> · <span id="svc-bar-total" class="font-extrabold"></span></p>
+              <a href="#pricing-builder" class="btn btn-primary btn-sm rounded-xl font-bold">К расчёту</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="pricing-builder" class="reveal mt-8 overflow-hidden rounded-3xl border border-line bg-canvas shadow-xl shadow-brand/5">
+          <div class="border-b border-line p-6 sm:p-8">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h3 class="text-xl font-extrabold sm:text-2xl">Соберите свой набор услуг</h3>
+                <p class="mt-2 text-sm text-ink/60">Отметьте галочками нужные позиции в таблицах выше. Выберите срок сотрудничества, и мы посчитаем стоимость со скидкой.</p>
+              </div>
+              <button type="button" id="svc-clear" class="btn btn-ghost btn-sm rounded-xl font-semibold" hidden>Очистить набор</button>
+            </div>
+          </div>
+
+          <div class="grid gap-0 lg:grid-cols-[1.35fr_1fr]">
+            <div class="p-6 sm:p-8 lg:border-r lg:border-line">
+              <div class="grid grid-cols-2 gap-1 rounded-xl border border-line bg-surface p-1 sm:grid-cols-4" role="radiogroup" aria-label="Срок сотрудничества" id="svc-periods"></div>
+              <p class="mt-2 text-xs text-ink/50">Скидка за срок действует на ежемесячные и ежеквартальные услуги. Разовые работы считаются по прайсу.</p>
+
+              <p id="svc-empty" class="mt-6 rounded-2xl border border-dashed border-line px-4 py-8 text-center text-sm text-ink/55">Пока ничего не выбрано. Отметьте услуги в таблицах выше.</p>
+              <ul id="svc-list" class="mt-5 divide-y divide-line text-sm" hidden></ul>
+
+              <dl id="svc-totals" class="mt-5 space-y-1.5 border-t border-line pt-4 text-sm" hidden>
+                <div class="flex justify-between gap-4"><dt class="text-ink/65">Стоимость по прайсу</dt><dd id="svc-sub" class="font-bold tabular-nums"></dd></div>
+                <div id="svc-disc-row" class="flex justify-between gap-4 text-brand" hidden><dt id="svc-disc-label"></dt><dd id="svc-disc" class="font-bold tabular-nums"></dd></div>
+                <div class="flex items-end justify-between gap-4 pt-2"><dt class="font-bold">Итого</dt><dd id="svc-total" class="text-3xl font-extrabold tracking-tight text-brand tabular-nums"></dd></div>
+                <p id="svc-pending" class="pt-1 text-xs text-ink/55" hidden></p>
+              </dl>
+            </div>
+
+            <div class="bg-surface/40 p-6 sm:p-8">
+              <h4 class="text-lg font-extrabold">Отправить набор в заявке</h4>
+              <form id="svc-form" class="mt-4 space-y-3" action="#" method="post" novalidate>
+                <input type="text" name="name" required placeholder="Имя" aria-label="Имя" class="input w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25" />
+                <input type="tel" name="phone" required placeholder="Телефон" aria-label="Телефон" class="input w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25" />
+                <input type="email" name="email" placeholder="E-mail (необязательно)" aria-label="E-mail" class="input w-full border border-line bg-surface/60 text-ink placeholder:text-ink/40 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25" />
+                <textarea name="services" id="svc-text" readonly rows="6" aria-label="Выбранные услуги" placeholder="Здесь появятся выбранные услуги" class="textarea w-full resize-none border border-line bg-canvas/60 text-xs leading-relaxed text-ink/80 placeholder:text-ink/40 focus:outline-none"></textarea>
+                <p id="svc-error" class="text-sm font-semibold text-error" role="alert" hidden></p>
+                <button type="submit" class="btn btn-primary btn-block rounded-xl font-bold shadow-lg shadow-brand/25">Отправить заявку</button>
+                <p class="text-[11px] leading-tight text-ink/45">Это демонстрационная форма: данные никуда не отправляются. Нажимая кнопку, вы соглашаетесь с <a href="#" class="underline decoration-line underline-offset-2 transition hover:text-brand">политикой конфиденциальности</a>.</p>
+              </form>
+              <div id="svc-success" class="mt-4 hidden rounded-2xl border border-brand/30 bg-brand/10 p-4 text-sm font-semibold leading-relaxed" role="alert" hidden>
+                <p id="svc-success-text"></p>
+                <button type="button" id="svc-again" class="btn btn-sm btn-outline mt-3 rounded-xl font-bold">Собрать новый набор</button>
               </div>
             </div>
           </div>
@@ -1659,6 +2323,169 @@
           activate(tabs[next].dataset.priceTab);
         });
       });
+    })();
+  </script>
+  <script>
+    // ===== Конструктор набора услуг (тарифы) =====
+    (() => {
+      // Срок сотрудничества и скидки (d — доля скидки на ежемесячные и ежеквартальные услуги). Меняйте здесь.
+      const PERIODS = [
+        { id: 'once', label: 'Разово', months: 1, d: 0 },
+        { id: '3', label: '3 месяца', months: 3, d: 0.05 },
+        { id: '6', label: '6 месяцев', months: 6, d: 0.1 },
+        { id: '12', label: '12 месяцев', months: 12, d: 0.15 }
+      ];
+      const $ = (id) => document.getElementById(id);
+      const rows = Array.from(document.querySelectorAll('[data-svc]'));
+      if (!rows.length || !$('svc-list')) return;
+      const fmt = (n) => Number(n).toLocaleString('ru-RU');
+      const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+      const items = rows.map((tr) => {
+        const d = tr.dataset;
+        return {
+          id: d.svc, tr, panel: d.panel, name: d.name, unit: d.unit, bill: d.bill, note: d.note,
+          price: d.price === '' ? null : Number(d.price), from: d.from === '1',
+          extra: d.extra ? Number(d.extra) : 0, extraFrom: d.extraFrom ? Number(d.extraFrom) : 0,
+          qtyOn: d.qty === '1', qtyMin: Number(d.qtyMin) || 1, qty: Number(d.qtyMin) || 1,
+          box: tr.querySelector('[data-svc-check]'), on: false
+        };
+      });
+      let period = PERIODS[0];
+      let sent = false;
+
+      function calc(it) {
+        const q = it.qty;
+        if (it.price === null) return { sum: null, detail: it.note || 'по запросу', rec: false };
+        if (it.price === 0) return { sum: 0, detail: it.note || 'бесплатно', rec: false };
+        const unit = it.extra ? it.price + it.extra * Math.max(0, q - it.extraFrom) : it.price * q;
+        let base = it.extra
+          ? fmt(it.price) + ' ₽ + ' + fmt(it.extra) + ' ₽ × ' + Math.max(0, q - it.extraFrom) + ' доп.'
+          : fmt(it.price) + ' ₽' + (q > 1 ? ' × ' + q : '');
+        if (it.from) base = 'от ' + base;
+        let mult = 1, tail = '', rec = false;
+        if (it.bill === 'month') { rec = true; mult = period.months; tail = period.months > 1 ? ' × ' + period.months + ' мес.' : ' · 1 мес.'; }
+        else if (it.bill === 'quarter') { rec = true; mult = period.months > 1 ? period.months / 3 : 1; tail = period.months > 1 ? ' × ' + mult + ' кв.' : ' · 1 кв.'; }
+        else if (/в год/.test(it.unit)) tail = ' · в год';
+        return { sum: unit * mult, detail: base + tail, rec };
+      }
+
+      function summary() {
+        const sel = items.filter((i) => i.on);
+        let sub = 0, recSum = 0, pending = 0, from = false;
+        const lines = sel.map((it) => {
+          const c = calc(it);
+          if (c.sum === null) pending++; else { sub += c.sum; if (c.rec) recSum += c.sum; }
+          if (it.from) from = true;
+          return { it, c };
+        });
+        const disc = Math.round(recSum * period.d);
+        return { sel, lines, sub, disc, total: sub - disc, pending, from };
+      }
+
+      function textOf(s) {
+        const l = s.lines.map(({ it, c }, i) => (i + 1) + '. ' + it.name + (it.qtyOn && it.qty > 1 ? ' — ' + it.qty + ' ' + it.unit.replace(/ · в год/, '') : '') + ' — ' + c.detail + (c.sum ? ' = ' + fmt(c.sum) + ' ₽' : ''));
+        if (!l.length) return '';
+        l.push('Срок: ' + period.label);
+        if (s.disc) l.push('Скидка ' + Math.round(period.d * 100) + '%: −' + fmt(s.disc) + ' ₽');
+        l.push('Итого: ' + (s.from ? 'от ' : '') + fmt(s.total) + ' ₽' + (s.pending ? ' + позиции по запросу' : ''));
+        return l.join('\n');
+      }
+
+      function render() {
+        const s = summary();
+        const n = s.sel.length;
+        items.forEach((it) => { it.tr.classList.toggle('bg-brand/5', it.on); if (it.box) it.box.checked = it.on; });
+        // счётчики на табах
+        document.querySelectorAll('[data-price-tab]').forEach((tab) => {
+          const k = items.filter((i) => i.on && i.panel === tab.dataset.priceTab).length;
+          const b = tab.querySelector('[data-tab-count]');
+          if (b) { b.textContent = k; b.classList.toggle('hidden', !k); }
+        });
+        // плавающая полоса
+        const bar = $('svc-bar');
+        bar.hidden = !n;
+        $('svc-bar-count').textContent = n;
+        $('svc-bar-total').textContent = n ? (s.from ? 'от ' : '') + fmt(s.total) + ' ₽' + (s.pending ? ' + по запросу' : '') : '';
+        // список
+        $('svc-empty').hidden = !!n; $('svc-list').hidden = !n; $('svc-totals').hidden = !n; $('svc-clear').hidden = !n;
+        const ul = $('svc-list'); ul.textContent = '';
+        s.lines.forEach(({ it, c }) => {
+          const li = el('li', 'flex flex-wrap items-center gap-x-4 gap-y-2 py-3');
+          const info = el('div', 'min-w-0 flex-1 basis-56');
+          info.append(el('p', 'font-semibold leading-snug', it.name), el('p', 'mt-0.5 text-xs text-ink/55', c.detail));
+          li.append(info);
+          if (it.qtyOn) {
+            const q = el('div', 'flex items-center gap-1.5');
+            const mk = (txt, d, label) => { const b = el('button', 'btn btn-square btn-xs rounded-md border-line bg-surface', txt); b.type = 'button'; b.setAttribute('aria-label', label + ': ' + it.name); b.disabled = d < 0 ? it.qty <= it.qtyMin : it.qty >= 99; b.addEventListener('click', () => { it.qty += d; render(); }); return b; };
+            q.append(mk('−', -1, 'Уменьшить'), el('span', 'w-6 text-center font-extrabold tabular-nums', String(it.qty)), mk('+', 1, 'Увеличить'), el('span', 'ml-0.5 text-[11px] text-ink/50', it.unit.replace(/ · в год/, '')));
+            li.append(q);
+          }
+          li.append(el('span', 'w-24 shrink-0 text-right font-extrabold tabular-nums ' + (c.sum ? '' : 'text-ink/55'), c.sum ? fmt(c.sum) + ' ₽' : (c.sum === 0 ? '0 ₽' : 'по запросу')));
+          const rm = el('button', 'btn btn-ghost btn-square btn-xs rounded-md text-ink/50 hover:text-error', '×');
+          rm.type = 'button'; rm.setAttribute('aria-label', 'Убрать из набора: ' + it.name);
+          rm.addEventListener('click', () => { it.on = false; it.qty = it.qtyMin; render(); });
+          li.append(rm); ul.append(li);
+        });
+        // итоги
+        $('svc-sub').textContent = fmt(s.sub) + ' ₽';
+        $('svc-disc-row').hidden = !s.disc;
+        $('svc-disc-label').textContent = 'Скидка за срок ' + period.label.toLowerCase() + ' (−' + Math.round(period.d * 100) + '%)';
+        $('svc-disc').textContent = '−' + fmt(s.disc) + ' ₽';
+        $('svc-total').textContent = (s.from ? 'от ' : '') + fmt(s.total) + ' ₽';
+        const pe = $('svc-pending');
+        pe.hidden = !(s.pending || s.from);
+        pe.textContent = (s.pending ? 'К сумме добавятся позиции по запросу (' + s.pending + ' шт.). ' : '') + (s.from ? 'Для позиций «от …» итоговая цена зависит от задачи.' : '');
+        // поле формы
+        $('svc-text').value = textOf(s);
+        if (n) $('svc-error').hidden = true;
+        // период
+        document.querySelectorAll('#svc-periods [role=radio]').forEach((b) => {
+          const on = b.dataset.p === period.id;
+          b.setAttribute('aria-checked', String(on));
+          b.className = 'rounded-lg px-2 py-2 text-xs font-bold leading-tight transition sm:text-sm ' + (on ? 'bg-brand text-on-brand shadow' : 'text-ink/65 hover:text-brand');
+        });
+      }
+
+      // периоды
+      PERIODS.forEach((p) => {
+        const b = el('button', '', p.label + (p.d ? ' −' + Math.round(p.d * 100) + '%' : ''));
+        b.type = 'button'; b.setAttribute('role', 'radio'); b.dataset.p = p.id;
+        b.addEventListener('click', () => { period = p; render(); });
+        $('svc-periods').append(b);
+      });
+
+      // выбор строк
+      items.forEach((it) => {
+        it.box.addEventListener('change', () => { it.on = it.box.checked; if (!it.on) it.qty = it.qtyMin; render(); });
+        it.tr.addEventListener('click', (e) => {
+          if (e.target.closest('input,button,a,label')) return;
+          it.on = !it.on; if (!it.on) it.qty = it.qtyMin; render();
+        });
+      });
+
+      const reset = () => { items.forEach((i) => { i.on = false; i.qty = i.qtyMin; }); render(); };
+      $('svc-clear').addEventListener('click', reset);
+
+      // демо-форма
+      const form = $('svc-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const s = summary();
+        const err = $('svc-error');
+        if (!s.sel.length) { err.textContent = 'Выберите хотя бы одну услугу в таблицах выше.'; err.hidden = false; return; }
+        const f = new FormData(form);
+        if (!String(f.get('name')).trim() || !String(f.get('phone')).trim()) { err.textContent = 'Укажите имя и телефон.'; err.hidden = false; return; }
+        const payload = { name: f.get('name'), phone: f.get('phone'), email: f.get('email'), period: period.label, items: s.lines.map(({ it, c }) => ({ name: it.name, qty: it.qty, sum: c.sum })), total: s.total, pending: s.pending };
+        console.log('Демо-заявка (никуда не отправлена):', payload);
+        $('svc-success-text').textContent = String(f.get('name')).trim() + ', заявка принята (демо): ' + s.sel.length + ' поз., срок — ' + period.label.toLowerCase() + ', итого ' + (s.from ? 'от ' : '') + fmt(s.total) + ' ₽' + (s.pending ? ' + позиции по запросу' : '') + '. Мы перезвоним и уточним детали.';
+        form.hidden = true; $('svc-success').hidden = false; $('svc-success').classList.remove('hidden');
+      });
+      $('svc-again').addEventListener('click', () => {
+        form.reset(); form.hidden = false; $('svc-success').hidden = true; $('svc-success').classList.add('hidden'); reset();
+      });
+
+      render();
     })();
   </script>
 </body>
